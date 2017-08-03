@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Weather</title>
+  <!-- jQuery -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+  <!-- Moment.js -->
+    <script src="https://cdn.jsdelivr.net/momentjs/2.12.0/moment.min.js"></script>
+
+  <!-- Bootstrap CDN-->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<body>
+
+<div class="container">
+  <div class="row">
+    <div class="jumbotron">
+      <h1 class="text-center">Weather Search</h1>
+    </div>
+  </div>
+
+
+  <div class="row">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title">Search by ZIP Code or City</h3>
+      </div>
+      <div class="panel-body">
+        <form>
+          <div class="form-group">
+          <label>Add a City or ZIP Code</label>
+          <input class="form-control" id="search" type="text">
+          </div>
+          <button class="btn btn-default" id="submit-id" type="submit">Submit</button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title">Results</h3>
+      </div> 
+      <div class="panel-body">
+        <div class="city"></div>
+        <div class="humidity"></div>
+        <div class="temp"></div>
+        <div class="sunset"></div>
+        <div class="clouds"></div> 
+      </div>
+  </div>
+</div>
+
+<!--jQuery-->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+<script type="text/javascript">
+ 
+var APIKey = "5e68d3fec5ccfb64ad77db9dcbc833c7";
+var search = "";
+var callBackResponse = "";
+
+
+$("#submit-id").click(function(){
+  event.preventDefault();
+  getWeather();
+})
+
+  function getWeather(){
+    search = $("#search").val();
+    var queryURL = "http://api.openweathermap.org/data/2.5/weather?q="+search+"&units=imperial&appid=" + APIKey;
+
+    // Here we run our AJAX call to the OpenWeatherMap API
+    $.ajax({
+        url: queryURL,
+        method: "GET"
+      })
+      // We store all of the retrieved data inside of an object called "response"
+      .done(function(response) {
+        //callBackResponse = response;
+        // Log the queryURL
+        console.log(queryURL);
+
+        // Log the resulting object
+        console.log(response);
+
+        // Transfer content to HTML
+        $(".city").html("<h2>" + response.name + " </h2>");
+        $(".humidity").html("Humidity "+response.main.humidity+" %");
+        $(".temp").html("Temperature "+response.main.temp+" &#x2109");
+        $(".sunset").html("Sunset "+response.sys.sunset);
+        $(".clouds").html("Cloudiness "+response.weather.clouds);
+
+        // Log the data in the console as well
+        console.log("Current Humidity:" + response.main.humidity);
+        console.log("Current Temperature: " + response.main.temp);
+        console.log("Sunset"+response.sys.sunset);
+
+        cbHandler(response);
+      });
+
+      // Formula to temp convert to Farenheit
+      // var k = response.main.temp;
+      // var x = (9/5) * (k - 273) + 32;
+      // var temp = Math.round(x);
+  }
+
+  function cbHandler(weatherDetails){
+    callBackResponse = weatherDetails;
+  }
+
+</script>
+</body>
+</html>
