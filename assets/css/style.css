@@ -3,6 +3,7 @@
 }
 
 html {
+
 	height: 100%;
 }
 
@@ -14,6 +15,7 @@ html {
 }
 
 body{
+
 	background-image: url("../images/sunrise.jpg");
 	background-size:cover;
 	height:100%;
@@ -23,9 +25,11 @@ body{
 	margin:0px auto 0px auto;
 }
 
+
 /*div box styling which contains local weather , Travel sites, and events*/
 
 #stack{
+
 	perspective: 1800px;
 	perspective-origin: 50% 50%;
 	font-size: 1.2em;
@@ -46,6 +50,7 @@ p{
 	text-align: center;
 	font-size: 10px;
 	margin-top: 10px;
+
 }
 
 #stack figure{
@@ -89,6 +94,7 @@ figure {
 	background: #006AAB;
 }
 #stack figure ul{
+
 	transform:rotateY(90deg) translateX(100%);
 	transform-origin: top right;
 	margin:0;
@@ -110,8 +116,10 @@ p,li,a{
 	font-size: 15px;
 	color: #fff;
 }
+
 a:hover{
 	color:#009eff;
+
 }
 #stack ul li:last-child{
 	border-right:none;
@@ -123,6 +131,7 @@ a:hover{
 	width:35%;
 }
 #stack ul.two li{
+
 	width:31.5%;
 }
 #search-bar{
@@ -135,13 +144,16 @@ a:hover{
 	position: absolute;
 	top:5px;
 	left:205px;
+
 }
 
 /*Search bar styling*/
 
 
 .search-form{
+
 	margin-top: 10px;
+
 }
 .search-form .form-group span.form-control-feedback {
     position: absolute;
@@ -186,6 +198,7 @@ a:hover{
   border-radius: 4px 25px 25px 4px;
 }
 
+
 .well{
 	    background-color: #ecf0f1;
 }
@@ -194,10 +207,12 @@ footer{
 	color:#fff;
 	padding:10px 10px 10px 0px;
 	text-align: center;
+
 }
 
 /*Media Queries for 980px */
 @media screen and (max-width: 980px){
+
 	
 	}
 
@@ -208,10 +223,12 @@ footer{
 	#stack{
 		left:90px;
 	}
+
 }
 
 /*Media Query for 640px width*/
 @media only screen and (max-width: 640px) {
+
 	#stack{
 		left:8px;
 	}
@@ -219,4 +236,5 @@ footer{
 		background-size:cover;
 		height:100%;
 	}
+
 }

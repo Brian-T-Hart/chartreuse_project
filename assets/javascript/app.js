@@ -1,5 +1,6 @@
 function dayAndNight(){
 
+
 	var current = new Date();
 	var day_night = current.getHours();
 
@@ -13,5 +14,5 @@ function dayAndNight(){
 			
 				document.body.style.backgroundImage = "url('assets/images/night.jpg')";
 		}
-}
+
 dayAndNight();
