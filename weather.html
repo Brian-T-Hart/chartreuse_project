@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+  <meta charset="utf-8">
   <title>Weather</title>
   <!-- jQuery -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
@@ -48,11 +49,13 @@
         <div class="country"></div>
         <div class="humidity"></div>
         <div class="temp"></div>
-        <div class="skies"></div> 
+        <div class="skies"></div>
+        <div class="wind"></div> 
       </div>
     </div>
   </div>
 </div>
+
 
 <script type="text/javascript">
  
@@ -90,6 +93,7 @@ $("#submit-id").click(function(){
         $(".humidity").html("Humidity: "+response.main.humidity+" %");
         $(".temp").html("Temperature: "+response.main.temp+" &#x2109");
         $(".skies").html("Skies: "+response.weather[0].description);
+        $(".wind").html("Wind Speed: "+response.wind.speed+" MPH");
 
         // Console logging the the return
         console.log("City: " + response.name);

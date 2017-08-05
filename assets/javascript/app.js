@@ -43,6 +43,10 @@ $("#submit-id").click(function(){
         $(".humidity").html("Humidity: "+response.main.humidity+" %");
         $(".temp").html("Temperature: "+response.main.temp+" &#x2109");
         $(".skies").html("Skies: "+response.weather[0].description);
+        $(".wind").html("Wind Speed: "+response.wind.speed+" MPH");
+        //I would like to display forecast but I'm not sure how to get this from Open Weather API
+        $(".forecast").html("Forecast: "+response.forecast); //need to get this part working
+
         // Console logging the the return
         console.log("City: " + response.name);
         console.log("Country: "+response.sys.country);
