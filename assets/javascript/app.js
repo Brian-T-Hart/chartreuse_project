@@ -20,12 +20,13 @@ var search = "";
 var callBackResponse = "";
 $("#submit-id").click(function(){
   event.preventDefault();
-  
-  var userInput = $('#search-bar').val();
-  var map = '<iframe width="600" height="450" frameborder="0" style="border:0" src="https://www.google.com/maps/embed/v1/place?key=AIzaSyDVZWMtxcCp39mek9w3shj-1r735OwHvak&q=' + userInput + '" allowfullscreen></iframe>';
-  $('#map').html(map);
 
+  var userInput = $('#search-bar').val();
+  var map = '<iframe frameborder="0" src="https://www.google.com/maps/embed/v1/place?key=AIzaSyDVZWMtxcCp39mek9w3shj-1r735OwHvak&q=' + userInput + '" allowfullscreen></iframe>';
+  $('#map').html(map);
   getWeather();
+  $('#search-bar').val('');
+
 })
   function getWeather(){
     search = $("#search-bar").val();
