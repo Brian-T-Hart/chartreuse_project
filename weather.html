@@ -6,7 +6,7 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
   <!-- Moment.js -->
-    <script src="https://cdn.jsdelivr.net/momentjs/2.12.0/moment.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/momentjs/2.12.0/moment.min.js"></script>
 
   <!-- Bootstrap CDN-->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -20,7 +20,6 @@
       <h1 class="text-center">Weather Search</h1>
     </div>
   </div>
-
 
   <div class="row">
     <div class="panel panel-default">
@@ -46,16 +45,14 @@
       </div> 
       <div class="panel-body">
         <div class="city"></div>
+        <div class="country"></div>
         <div class="humidity"></div>
         <div class="temp"></div>
-        <div class="sunset"></div>
-        <div class="clouds"></div> 
+        <div class="skies"></div> 
       </div>
+    </div>
   </div>
 </div>
-
-<!--jQuery-->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
 <script type="text/javascript">
  
@@ -88,24 +85,22 @@ $("#submit-id").click(function(){
         console.log(response);
 
         // Transfer content to HTML
-        $(".city").html("<h2>" + response.name + " </h2>");
-        $(".humidity").html("Humidity "+response.main.humidity+" %");
-        $(".temp").html("Temperature "+response.main.temp+" &#x2109");
-        $(".sunset").html("Sunset "+response.sys.sunset);
-        $(".clouds").html("Cloudiness "+response.weather.clouds);
+        $(".city").html("City: " + response.name);
+        $(".country").html("Country: "+response.sys.country);
+        $(".humidity").html("Humidity: "+response.main.humidity+" %");
+        $(".temp").html("Temperature: "+response.main.temp+" &#x2109");
+        $(".skies").html("Skies: "+response.weather[0].description);
 
-        // Log the data in the console as well
-        console.log("Current Humidity:" + response.main.humidity);
-        console.log("Current Temperature: " + response.main.temp);
-        console.log("Sunset"+response.sys.sunset);
+        // Console logging the the return
+        console.log("City: " + response.name);
+        console.log("Country: "+response.sys.country);
+        console.log("Current Humidity:" + response.main.humidity+" %");
+        console.log("Current Temperature: " + response.main.temp+" &#x2109");
+        console.log("Skies: "+response.weather[0].description);
 
         cbHandler(response);
       });
 
-      // Formula to temp convert to Farenheit
-      // var k = response.main.temp;
-      // var x = (9/5) * (k - 273) + 32;
-      // var temp = Math.round(x);
   }
 
   function cbHandler(weatherDetails){
