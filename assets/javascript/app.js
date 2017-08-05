@@ -1,3 +1,4 @@
+$('#displayDiv').hide();
 function dayAndNight(){
 
   var current = new Date();
@@ -14,20 +15,21 @@ function dayAndNight(){
         document.body.style.backgroundImage = "url('assets/images/night.jpg')";
     }
 }
+
 dayAndNight();
 var APIKey = "5e68d3fec5ccfb64ad77db9dcbc833c7";
 var search = "";
 var callBackResponse = "";
 $("#submit-id").click(function(){
   event.preventDefault();
-
+  $('#displayDiv').show();
   var userInput = $('#search-bar').val();
   var map = '<iframe frameborder="0" src="https://www.google.com/maps/embed/v1/place?key=AIzaSyDVZWMtxcCp39mek9w3shj-1r735OwHvak&q=' + userInput + '" allowfullscreen></iframe>';
   $('#map').html(map);
   getWeather();
   $('#search-bar').val('');
-
 })
+
   function getWeather(){
     search = $("#search-bar").val();
     var queryURL = "http://api.openweathermap.org/data/2.5/weather?q="+search+"&units=imperial&appid=" + APIKey;
