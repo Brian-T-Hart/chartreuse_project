@@ -144,6 +144,7 @@ a:hover{
 	position: absolute;
 	top:5px;
 	left:205px;
+     color: #3596e0;
 
 }
 
@@ -236,5 +237,5 @@ footer{
 		background-size:cover;
 		height:100%;
 	}
-
+    
 }
