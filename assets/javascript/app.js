@@ -1,37 +1,26 @@
-<<<<<<< HEAD
-=======
+$('#displayDiv').hide();
 //======== Change Background Color =======//
 
->>>>>>> zoey
 function dayAndNight(){
 
   var current = new Date();
   var day_night = current.getHours();
 
-<<<<<<< HEAD
-    if (day_night < 12){
-=======
     if (day_night < 19){
->>>>>>> zoey
-      //Day
-      
+
+      //Day      
       document.body.style.backgroundImage = "url('assets/images/sunrise.jpg')";
     }
     else{
-      //Night
-      
-        document.body.style.backgroundImage = "url('assets/images/night.jpg')";
+      //Night      
+      document.body.style.backgroundImage = "url('assets/images/night.jpg')";
     }
 }
+
 dayAndNight();
 var APIKey = "5e68d3fec5ccfb64ad77db9dcbc833c7";
 var search = "";
 var callBackResponse = "";
-<<<<<<< HEAD
-$("#submit-id").click(function(){
-  event.preventDefault();
-  
-=======
 
 //======== On Click Event =======//
 
@@ -39,25 +28,22 @@ $("#submit-id").click(function(){
 
 $("#submit-id").click(function(){
   event.preventDefault();
->>>>>>> zoey
-  var userInput = $('#search-bar').val();
-  var map = '<iframe width="600" height="450" frameborder="0" style="border:0" src="https://www.google.com/maps/embed/v1/place?key=AIzaSyDVZWMtxcCp39mek9w3shj-1r735OwHvak&q=' + userInput + '" allowfullscreen></iframe>';
-  $('#map').html(map);
 
+  $('#displayDiv').show();
+
+  var userInput = $('#search-bar').val();
+  var map = '<iframe frameborder="0" src="https://www.google.com/maps/embed/v1/place?key=AIzaSyDVZWMtxcCp39mek9w3shj-1r735OwHvak&q=' + userInput + '" allowfullscreen></iframe>';
+  $('#map').html(map);
   getWeather();
-})
-<<<<<<< HEAD
-  function getWeather(){
-    search = $("#search-bar").val();
-    var queryURL = "http://api.openweathermap.org/data/2.5/weather?q="+search+"&units=imperial&appid=" + APIKey;
-=======
+  $('#search-bar').val('');
+});
 
 //===== Weather API =====//
 
   function getWeather(){
     var userInput = $('#search-bar').val();
     var queryURL = "http://api.openweathermap.org/data/2.5/weather?q="+ userInput +"&units=imperial&appid=" + APIKey;
->>>>>>> zoey
+
     // Here we run our AJAX call to the OpenWeatherMap API
     $.ajax({
         url: queryURL,
@@ -72,18 +58,6 @@ $("#submit-id").click(function(){
         console.log(response);
         // Transfer content to HTML
         $(".city").html("City: " + response.name);
-<<<<<<< HEAD
-        $(".country").html("Country: "+response.sys.country);
-        $(".humidity").html("Humidity: "+response.main.humidity+" %");
-        $(".temp").html("Temperature: "+response.main.temp+" &#x2109");
-        $(".skies").html("Skies: "+response.weather[0].description);
-        // Console logging the the return
-        console.log("City: " + response.name);
-        console.log("Country: "+response.sys.country);
-        console.log("Current Humidity:" + response.main.humidity+" %");
-        console.log("Current Temperature: " + response.main.temp+" &#x2109");
-        console.log("Skies: "+response.weather[0].description);
-=======
         $(".country").html("Country: " + response.sys.country);
         $(".humidity").html("Humidity: " + response.main.humidity + " %");
         $(".temp").html("Temperature: " + response.main.temp + " &#x2109");
@@ -94,15 +68,12 @@ $("#submit-id").click(function(){
         console.log("Current Humidity:" + response.main.humidity + " %");
         console.log("Current Temperature: " + response.main.temp + " &#x2109");
         console.log("Skies: " + response.weather[0].description);
->>>>>>> zoey
         cbHandler(response);
       });
   }
   function cbHandler(weatherDetails){
     callBackResponse = weatherDetails;
-<<<<<<< HEAD
-  }
-=======
+
   }
 
   //===== Event API Section =====//
@@ -179,4 +150,4 @@ $("#submit-id").click(function(){
     });
 
   //=====End of Event API Section=====//
->>>>>>> zoey
+
