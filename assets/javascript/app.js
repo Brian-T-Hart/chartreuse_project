@@ -53,7 +53,7 @@ $("#submit-id").click(function(){
         $(".skies").html("Skies: "+response.weather[0].description);
         $(".wind").html("Wind Speed: "+response.wind.speed+" MPH");
         //I would like to display forecast but I'm not sure how to get this from Open Weather API
-        $(".forecast").html("Forecast: "+response.forecast); //need to get this part working
+        //$(".forecast").html("Forecast: "+response.forecast); //need to get this part working
 
         // Console logging the the return
         console.log("City: " + response.name);
@@ -67,3 +67,14 @@ $("#submit-id").click(function(){
   function cbHandler(weatherDetails){
     callBackResponse = weatherDetails;
   }
+
+  //Google Custom Search for Travel
+  (function() {
+    var cx = '007494034927600507137:cv0vabjru-a';
+    var gcse = document.createElement('script');
+    gcse.type = 'text/javascript';
+    gcse.async = true;
+    gcse.src = 'https://cse.google.com/cse.js?cx=' + cx;
+    var s = document.getElementsByTagName('script')[0];
+    s.parentNode.insertBefore(gcse, s);
+  })();
