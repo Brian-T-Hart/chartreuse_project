@@ -11,11 +11,9 @@ html {
 	color:#fff;
 	left:20px;
 	top:10px;
-
 }
 
 body{
-
 	background-image: url("../images/sunrise.jpg");
 	background-size:cover;
 	height:100%;
@@ -24,9 +22,60 @@ body{
 	max-width: 980px;
 	margin:0px auto 0px auto;
 }
+.jumbotron{
+	background: none;
+	text-align: center;
+	color:#fff;
 
+}
+/*=========================== Main body Styling============================*/
 
-/*div box styling which contains local weather , Travel sites, and events*/
+/* Style the tab */
+div.tab {
+    overflow: hidden;
+    border: 1px solid #ccc;
+    background-color:  #006AAB ;
+}
+
+/* Style the buttons inside the tab */
+div.tab button {
+    background-color: inherit;
+    float: left;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    padding: 14px 16px;
+    transition: 0.3s;
+}
+
+/* Change background color of buttons on hover */
+div.tab button:hover {
+    background-color: #128AAE ;
+}
+
+/* Create an active/current tablink class */
+div.tab button.active {
+    background-color:  #128AAE;
+}
+.tablinks, #displayInfo{
+	color:#fff;
+	font-family: 'lato', sans-serif;
+	line-height: 2em;
+	letter-spacing: .0166em;
+	font-size: 15px;
+}
+
+/* Style the tab content */
+.tabcontent {
+    display: none;
+    padding: 6px 12px;
+    font-family: 'lato', sans-serif;
+
+    /*border: 1px solid #ccc;
+    border-top: none;*/
+}
+
+/*============div box styling which contains local weather , Travel sites, and events==========*/
 
 #stack{
 
@@ -39,7 +88,7 @@ body{
 	overflow-x:hidden;
 	overflow-x: visible;
 	position: relative;
-	top:10px;
+	/*top:10px;*/
 	left:300px;
 }
 div{
@@ -109,9 +158,9 @@ figure {
 	/*vertical-align: middle;*/
 	border-right:.0625rem solid rgba(255, 255, 255, .1);
 }
-p,li,a{
+p,li,a, #wea-de{
 	font-family: 'lato', sans-serif;
-	line-height: 2em;
+	line-height: 1.2em;
 	letter-spacing: .0166em;
 	font-size: 15px;
 	color: #fff;
@@ -145,84 +194,68 @@ a:hover{
 	top:5px;
 	left:205px;
      color: #3596e0;
-
 }
 
-/*Search bar styling*/
-
-
-.search-form{
-
-	margin-top: 10px;
-
-}
-.search-form .form-group span.form-control-feedback {
-    position: absolute;
-    top: -1px;
-    right: -2px;
-    z-index: 2;
-    display: block;
-    width: 34px;
-    height: 34px;
-    line-height: 34px;
-    text-align: center;
-    color: #3596e0;
-    left: initial;
-    font-size: 14px;
-}
-.glyphicon {
-	font-family: 'Glyphicons Halflings';
-    font-style: normal;
-    font-weight: 400;
-   }
-    .search-form .form-group {
-  float: right !important;
-  transition: all 0.35s, border-radius 0s;
-  width: 32px;
-  height: 32px;
-  background-color: #fff;
-  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset;
-  border-radius: 25px;
-  border: 1px solid #ccc;
-}
-.search-form .form-group input.form-control {
-  padding-right: 20px;
-  border: 0 none;
-  background: transparent;
-  box-shadow: none;
-  display:block;
+/*CSS for the list of events displayed in the Events section*/
+#eventLst{
+  background: #FEF5E7;
+  margin-bottom:1px;
+  padding: 3px;
+  border-radius: 5px;   
 }
 
-.search-form .form-group:hover,
-.search-form .form-group.hover {
-  width: 100%;
-  border-radius: 4px 25px 25px 4px;
+#eventLst a {
+  color: #0000FF;
 }
 
 
-.well{
+
+.tab{
 	    background-color: #ecf0f1;
+	    margin-top: 20px;
 }
+/*=========footer styling=============*/
 footer{
-	font-size: .85em;
-	color:#fff;
+	font-family: 'lato', sans-serif;
+	line-height: 1.2em;
+	letter-spacing: .0166em;
+	color: #fff;
 	padding:10px 10px 10px 0px;
 	text-align: center;
+	 background: #006AAB;
+	margin-top: 20px;
+	height:100px;
 
+}
+.social-icon{
+
+	display: inline-block;
+	margin:0px 5px;
+
+}
+#socialiconImg{
+	width:30px;
+	height:30px;
+	background: none;
+}
+li{
+
+	display: inline-block;
+}        
+
+/*MAP STYLING*/
+
+#map{
+  
 }
 
 /*Media Queries for 980px */
-@media screen and (max-width: 980px){
-
-	
-	}
-
 
 /*Media Query for 768px Width*/
 @media screen and (max-width: 768px){
 
 	#stack{
-		left:90px;
+		left:180px;
 	}
 
 }
@@ -231,11 +264,32 @@ footer{
 @media only screen and (max-width: 640px) {
 
 	#stack{
-		left:8px;
+		left:5px;
+
 	}
 	body{
 		background-size:cover;
 		height:100%;
 	}
-    
+    footer{
+    	height:100px;
+    }
 }
+
+@media screen and (max-width: 460px){
+
+	#stack{
+		left:5px;
+	}
+	body{
+		background-size:cover;
+		height:100%;
+	}
+    footer{
+    	height:100px;
+    }
+    li{
+    	margin-top: 10px;
+    }
+	}
+
