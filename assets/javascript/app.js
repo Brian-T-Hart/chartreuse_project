@@ -1,4 +1,21 @@
-// ====== BackGround Change Using day light saving
+
+// Initialize Firebase
+var config = {
+  apiKey: "AIzaSyAF2AEQWxdCW4mkrVDhbcrs-OiCv_X_dKE",
+  authDomain: "chartreuse-64d32.firebaseapp.com",
+  databaseURL: "https://chartreuse-64d32.firebaseio.com",
+  projectId: "chartreuse-64d32",
+  storageBucket: "",
+  messagingSenderId: "1006969536811"
+  };
+  firebase.initializeApp(config);
+
+var dataRef = firebase.database();
+
+
+$('#displayDiv').hide();
+//======== Change Background Color =======//
+
 function dayAndNight(){
 
   var current = new Date();
@@ -120,11 +137,21 @@ function getEvents(eventType){
       // We store all of the retrieved data inside of an object called "response"
       .done(function(response) {
         // Transfer content to HTML
-        $(".city").html( response.name);
-        $(".country").html(response.sys.country);
-        $(".humidity").html("Humidity: " + response.main.humidity+" %");
-        $(".temp").html(response.main.temp+" &#x2109");
-        
+        $(".city").html("City: " + response.name);
+        $(".country").html("Country: " + response.sys.country);
+        $(".humidity").html("Humidity: " + response.main.humidity + " %");
+        $(".temp").html("Temperature: " + response.main.temp + " &#x2109");
+        $(".skies").html("Skies: " + response.weather[0].description);
+
+        // Code for the push
+        dataRef.ref().push({
+          city: response.name,
+          country: response.sys.country,
+          humidity: response.main.humidity,
+          temp: response.main.temp,
+          skies: response.weather[0].description,
+          dateAdded: firebase.database.ServerValue.TIMESTAMP
+        });
         /*
         * Code below is to set the sunrise & sunset time for the city selected for event search
         */
@@ -145,7 +172,6 @@ function getEvents(eventType){
         // iconImg = response.weather[0].icon; 
         // $(".iconImage").attr("src", "http://openweathermap.org/img/w/"+iconImg+".png");
         // $(".iconImage").attr("alt", response.weather[0].description);
-        
 
         cbHandler(response);
       });
