@@ -1,17 +1,17 @@
 // ====== BackGround Change Using day light saving
 function dayAndNight(){
 
-	var current = new Date();
-	var day_night = current.getHours();
+  var current = new Date();
+  var day_night = current.getHours();
 
-		if (day_night < 19){
-			//Day			
-			document.body.style.backgroundImage = "url('assets/images/sunrise.jpg')";
-		}
-		else{
-			//Night			
-				document.body.style.backgroundImage = "url('assets/images/night.jpg')";
-		}
+    if (day_night < 19){
+      //Day     
+      document.body.style.backgroundImage = "url('assets/images/sunrise.jpg')";
+    }
+    else{
+      //Night     
+        document.body.style.backgroundImage = "url('assets/images/night.jpg')";
+    }
 }
 dayAndNight();//======background change end code
 
