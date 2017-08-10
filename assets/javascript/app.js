@@ -1,44 +1,42 @@
-//======== Change Background Color =======//
-
+// ====== BackGround Change Using day light saving
 function dayAndNight(){
 
   var current = new Date();
   var day_night = current.getHours();
+  console.log(current);
+  console.log(day_night);
 
-    if (day_night < 19){
-      //Day
-      
+    if (day_night > 6 && day_night < 19){
+      //Day     
       document.body.style.backgroundImage = "url('assets/images/sunrise.jpg')";
     }
     else{
-      //Night
-      
+      //Night     
         document.body.style.backgroundImage = "url('assets/images/night.jpg')";
     }
 }
-dayAndNight();
+dayAndNight();//======background change end code
+
+//WEATHER API ADDED
 var APIKey = "5e68d3fec5ccfb64ad77db9dcbc833c7";
 var search = "";
 var callBackResponse = "";
+var userInput;
 
-//======== On Click Event =======//
-
-//===== Embed Map =====//
+$('#displayPanel').hide();
 
 $("#submit-id").click(function(){
   event.preventDefault();
-  var userInput = $('#search-bar').val();
-  var map = '<iframe width="600" height="450" frameborder="0" style="border:0" src="https://www.google.com/maps/embed/v1/place?key=AIzaSyDVZWMtxcCp39mek9w3shj-1r735OwHvak&q=' + userInput + '" allowfullscreen></iframe>';
-  $('#map').html(map);
-
+  userInput = $('#search-bar').val();
   getWeather();
-})
+  $('#search-bar').val("");
+});
 
-//===== Weather API =====//
-
+//using weather api key getting weather details
   function getWeather(){
-    var userInput = $('#search-bar').val();
-    var queryURL = "http://api.openweathermap.org/data/2.5/weather?q="+ userInput +"&units=imperial&appid=" + APIKey;
+    var queryURL = "http://api.openweathermap.org/data/2.5/weather?q="+userInput+"&units=imperial&appid=" + APIKey;
+    //console.log(queryURL);
+    var iconImg;
     // Here we run our AJAX call to the OpenWeatherMap API
     $.ajax({
         url: queryURL,
@@ -46,101 +44,57 @@ $("#submit-id").click(function(){
       })
       // We store all of the retrieved data inside of an object called "response"
       .done(function(response) {
-        //callBackResponse = response;
-        // Log the queryURL
-        console.log(queryURL);
-        // Log the resulting object
-        console.log(response);
         // Transfer content to HTML
-        $(".city").html("City: " + response.name);
-        $(".country").html("Country: " + response.sys.country);
-        $(".humidity").html("Humidity: " + response.main.humidity + " %");
-        $(".temp").html("Temperature: " + response.main.temp + " &#x2109");
-        $(".skies").html("Skies: " + response.weather[0].description);
-        // Console logging the the return
-        console.log("City: " + response.name);
-        console.log("Country: " + response.sys.country);
-        console.log("Current Humidity:" + response.main.humidity + " %");
-        console.log("Current Temperature: " + response.main.temp + " &#x2109");
-        console.log("Skies: " + response.weather[0].description);
+        $(".city").html( response.name);
+        $(".country").html(response.sys.country);
+        $(".humidity").html("Humidity: " + response.main.humidity+" %");
+        $(".temp").html(Math.round(response.main.temp)+" &#x2109");
+        
+        /*
+        * Code below is to set the sunrise & sunset time for the city selected for event search
+        */
+        var sunrise = response.sys.sunrise;
+        var x = moment(sunrise*1000).format('h:mm A');
+        var sunset = response.sys.sunset;
+        var y = moment(sunset*1000).format('h:mm A');
+        // var date = new Date(sunrise*1000);
+        // var minutes = date.getMinutes() < 10 ? '0' + date.getMinutes() : date.getMinutes();
+        // var formattedSunrise ="Sunrise " +  date.getHours() + ":" + minutes;
+        $(".sunrise").html('Sunrise ' + x);
+
+       
+        // date = new Date(sunset*1000);
+        // minutes = date.getMinutes() < 10 ? '0' + date.getMinutes() : date.getMinutes();
+        // var formattedSunset = "Sunset: " + date.getHours() + ":" + minutes;
+        
+        $(".sunset").html(' Sunset ' + y);
+        
+        // Below lines of code show the icon for "skies". For now we have commented this code.
+        // iconImg = response.weather[0].icon; 
+        // $(".iconImage").attr("src", "http://openweathermap.org/img/w/"+iconImg+".png");
+        // $(".iconImage").attr("alt", response.weather[0].description);
+        
+        
         cbHandler(response);
       });
   }
+
   function cbHandler(weatherDetails){
     callBackResponse = weatherDetails;
   }
 
-  //===== Event API Section =====//
+//Displays the Map section
+// function initMap() {
+//   //var mapsAPIKey = "AIzaSyDTgS4kfcZbPUE8-L8Adah8y2AlOPkTwHM"; //API Key for Google Maps Javascript API    
+//   var latlng = {lat: -25.363, lng: 131.044};
+//   var map = new google.maps.Map(document.getElementById('#displayMap'), {
+//     zoom: 4,
+//     center: latlng
+//   });
+//   var marker = new google.maps.Marker({
+//     position: latlng,
+//     map: map
+//   });
+// }
 
-    $("#submit-id").on("click", function eventSearch() {
 
-      //Getting the location info from search bar
-      var userInput = $('#search-bar').val();
-      console.log("location in the search bar: " + userInput);
-
-      // Storing our Eventbrite API URL
-      var queryURL = "https://www.eventbriteapi.com/v3/events/search/?token=JTGVPWWUXBDL7LEBSQYI&q=" + userInput + "&sort_by=best";
-
-      console.log(queryURL);
-
-      // Perfoming an AJAX GET request to our queryURL
-      $.ajax({
-      url: queryURL,
-      method: "GET"
-      })
-
-      // After the data from the AJAX request comes back
-      .done(function(response) {
-        var result = response.events;
-      console.log(result);
-      console.log(result[0].name.text);
-      console.log(result[0].start.local);
-      console.log(result[0].description.html);
-      console.log(result[0].url);
-
-      // Change HTML file
-      // $("#article-events").prepend("<h1> JSON response: </h1>" + JSON.stringify(result));
-
-      $("#dynamic-code").append("<h2> " + result[0].name.text + "</h2>");
-      $("#dynamic-code").append("<h5>Start Time: " + result[0].start.local + "</h5>");
-      // $("#article-events").append("<p>" + result[0].description.html + "</p>");
-      
-      });
-
-      //===For Loop for Displaying Event List ===//
-
-    //   eventList = [];
-
-    //   function displayEventList() {
-
-    //     // Deleting the animal buttons prior to adding new animal buttons
-    //     // (this is necessary otherwise we will have repeat buttons)
-    //     $("#event-list-container").empty();
-
-    // Example:
-    //     //Try using a loop that appends a button for each string in the array.
-    //     // Looping through the array of itmes
-    //     for (var i = 0; i < eventList.length; i++) {
-
-    //       // Then dynamicaly generating buttons for each item in the array.
-    //       // This code $("<button>") is all jQuery needs to create the start and end tag. (<button></button>)
-    //       var a = $("<button>");
-    //       // Adding a class
-    //       a.addClass("list-card");
-    //       // Adding button type
-    //       a.attr("type", "button");
-    //       // Adding a data-attribute with a value of the animal at index i
-    //       a.attr("data-input", eventList[i]);
-    //       // Providing the button's text with a value of the animal at index i
-    //       a.text(eventList[i]);
-    //       // Adding the button to the HTML
-    //       $("#buttons").append(a);
-    //     }
-    //   }
-
-    //     //Calling the function
-    //     displayEventList();
-
-    });
-
-  //=====End of Event API Section=====//
