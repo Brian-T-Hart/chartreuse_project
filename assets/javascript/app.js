@@ -145,9 +145,20 @@ function getEvents(eventType){
         // iconImg = response.weather[0].icon; 
         // $(".iconImage").attr("src", "http://openweathermap.org/img/w/"+iconImg+".png");
         // $(".iconImage").attr("alt", response.weather[0].description);
-        
-        
         cbHandler(response);
+        var lat = response.coord.lat;
+        console.log(lat);
+        var long = response.coord.lon;
+        console.log(long);
+        var api_key = "G1LHK198LBCB"
+        queryURLTime = "http://vip.timezonedb.com/v2/get-time-zone?key=" + api_key +"&format=json&by=position&lng=" + long + "&lat=" + lat;
+        console.log(queryURLTime);
+        $.ajax({ url: queryURLTime, method: "GET"})
+         .done(function(response) {
+         console.log(response);
+        //appends the country name to the html
+         $('.time').html(moment(response.formatted).format('hh:mm A'));
+        });
       });
   }
 
