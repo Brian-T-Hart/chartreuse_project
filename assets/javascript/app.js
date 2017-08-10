@@ -3,8 +3,10 @@ function dayAndNight(){
 
   var current = new Date();
   var day_night = current.getHours();
+  console.log(current);
+  console.log(day_night);
 
-    if (day_night < 19){
+    if (day_night > 6 && day_night < 19){
       //Day     
       document.body.style.backgroundImage = "url('assets/images/sunrise.jpg')";
     }
@@ -49,21 +51,26 @@ updateChooseDate();//FUNCTIONS TO UPDATE "Choose Dates" DIV ENDS HERE
 var APIKey = "5e68d3fec5ccfb64ad77db9dcbc833c7";
 var search = "";
 var callBackResponse = "";
+var userInput = "Irvine, CA";
+
+$('#displayPanel').hide();
+
 $("#submit-id").click(function(){
   event.preventDefault();
   //displays map 
-  // var userInput = $('#search-bar').val();
+  userInput = $('#search-bar').val();
   // var map = '<iframe class='embed-responsive-item' width="250" height="150" frameborder="0" style="border:0" src="https://www.google.com/maps/embed/v1/place?key=AIzaSyDVZWMtxcCp39mek9w3shj-1r735OwHvak&q=' + userInput + '" allowfullscreen></iframe>';
   // $('#displayMap').html(map);
   getWeather();
   getEvents("paid");
+  // $('#search-bar').val("");
 });
 //=====using weather api city getting events in that city
 function getEvents(eventType){  
   var eventBriteAPIKey = "TGB23I7OLQWI6CGFUQ";
   var eventBriteToken = "JTGVPWWUXBDL7LEBSQYI";
   var eventBriteURL = "https://www.eventbriteapi.com/v3/events/search/?token=JTGVPWWUXBDL7LEBSQYI&q="+
-                      $("#search-bar").val()+
+                      userInput +
                       //"Irvine, CA"+
                       "&price="+
                       eventType+
@@ -104,12 +111,24 @@ function getEvents(eventType){
     }
     $("#displayInfo").html(eventsHTML);
     $("#displayInfo").css('display','block');
+    $('#displayPanel').show();
   });
 };
+
+  function myFunction(eventType) {
+      if(eventType === "FreeEvents") {
+        document.getElementById("displayInfo").innerHTML = "Free Events";
+      } else if (eventType === "PopularEvents") {
+        document.getElementById("displayInfo").innerHTML = "Popular Events";    
+      } else if (eventType === "Hotels") {
+        document.getElementById("displayInfo").innerHTML = "Hotels";    
+      }
+    }
+
 //using weather api key getting weather details
   function getWeather(){
-    search = $("#search-bar").val();
-    var queryURL = "http://api.openweathermap.org/data/2.5/weather?q="+search+"&units=imperial&appid=" + APIKey;
+    // search = $("#search-bar").val();
+    var queryURL = "http://api.openweathermap.org/data/2.5/weather?q="+userInput+"&units=imperial&appid=" + APIKey;
     //console.log(queryURL);
     var iconImg;
     // Here we run our AJAX call to the OpenWeatherMap API
@@ -123,23 +142,26 @@ function getEvents(eventType){
         $(".city").html( response.name);
         $(".country").html(response.sys.country);
         $(".humidity").html("Humidity: " + response.main.humidity+" %");
-        $(".temp").html(response.main.temp+" &#x2109");
+        $(".temp").html(Math.round(response.main.temp)+" &#x2109");
         
         /*
         * Code below is to set the sunrise & sunset time for the city selected for event search
         */
         var sunrise = response.sys.sunrise;
-        var sunset = response.sys.sunset; 
-        var date = new Date(sunrise*1000);
-        var minutes = date.getMinutes() < 10 ? '0' + date.getMinutes() : date.getMinutes();
-        var formattedSunrise ="Sunrise " +  date.getHours() + ":" + minutes;
-        $(".sunrise").html(formattedSunrise);
+        var x = moment(sunrise*1000).format('h:mm A');
+        var sunset = response.sys.sunset;
+        var y = moment(sunset*1000).format('h:mm A');
+        // var date = new Date(sunrise*1000);
+        // var minutes = date.getMinutes() < 10 ? '0' + date.getMinutes() : date.getMinutes();
+        // var formattedSunrise ="Sunrise " +  date.getHours() + ":" + minutes;
+        $(".sunrise").html('Sunrise ' + x);
+
        
-        date = new Date(sunset*1000);
-        minutes = date.getMinutes() < 10 ? '0' + date.getMinutes() : date.getMinutes();
-        var formattedSunset = "Sunset: " + date.getHours() + ":" + minutes;
+        // date = new Date(sunset*1000);
+        // minutes = date.getMinutes() < 10 ? '0' + date.getMinutes() : date.getMinutes();
+        // var formattedSunset = "Sunset: " + date.getHours() + ":" + minutes;
         
-        $(".sunset").html(formattedSunset);
+        $(".sunset").html(' Sunset ' + y);
         
         // Below lines of code show the icon for "skies". For now we have commented this code.
         // iconImg = response.weather[0].icon; 
@@ -154,6 +176,11 @@ function getEvents(eventType){
   function cbHandler(weatherDetails){
     callBackResponse = weatherDetails;
   }
+
+  
+
+      
+
 
 //Displays the Map section
 // function initMap() {
