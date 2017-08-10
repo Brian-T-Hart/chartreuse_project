@@ -3,31 +3,57 @@
 }
 
 html {
-
 	height: 100%;
 }
 
-.col-md-1{
+/*.col-md-1{
 	color:#fff;
 	left:20px;
 	top:10px;
-}
+}*/
 
 body{
 	background-image: url("../images/sunrise.jpg");
 	background-size:cover;
-	height:100%;
+	/*height:100%;*/
+	min-height: 400px;
+	padding: 80px 0px;
 }
-.container{
+
+#eventImage{
+	float:left;
+	padding: 5px;
+	margin-right: 20px;
+}
+.eventList{
+	color:white;
+	margin-left: 20px;
+	padding: 10px;
+	line-height: 1.5em;
+	border: 2px solid white;
+	border-radius: 10px;
+    background-color:  #006AAB ;
+    margin-top: 15px;
+}
+#eventsDisplay{
+	margin-left: 40px;
+}
+.link{
+	color:yellow;
+	text-decoration: underline;
+	font-style: italic;
+}
+/*.container{
 	max-width: 980px;
 	margin:0px auto 0px auto;
-}
-.jumbotron{
+}*/
+
+/*.jumbotron{
 	background: none;
 	text-align: center;
 	color:#fff;
-
-}
+	margin: 0;
+}*/
 /*=========================== Main body Styling============================*/
 
 /* Style the tab */
@@ -65,6 +91,14 @@ div.tab button.active {
 	font-size: 15px;
 }
 
+#displayPanel {
+	width: 80%;
+	display: block;
+	margin: auto;
+	margin-top: 30px;
+	background-color: #337ab7;
+}
+
 /* Style the tab content */
 .tabcontent {
     display: none;
@@ -76,34 +110,40 @@ div.tab button.active {
 }
 
 /*============div box styling which contains local weather , Travel sites, and events==========*/
+#stackContainer {
+	width: 310px;
+	display: block;
+	margin: auto;
+	margin-top: 60px;
+}
 
 #stack{
-
 	perspective: 1800px;
 	perspective-origin: 50% 50%;
 	font-size: 1.2em;
 	text-align: center;
-	display: inline-block;
+	display: block;
+	margin: auto;
 	font-family: Montserrat, Tahoma, Arial, sans-serif;
 	overflow-x:hidden;
 	overflow-x: visible;
-	position: relative;
-	/*top:10px;*/
-	left:300px;
 }
-div{
+/*div{
 	color:black;
-}
+}*/
 
 p{
 	text-align: center;
 	font-size: 10px;
 	margin-top: 10px;
+}
 
+h2{
+	margin-top: 0;
 }
 
 #stack figure{
-	position: relative;
+	/*position: relative;*/
 	margin:0 1em;
 	height: 5ch;
 	width:16em;
@@ -113,19 +153,21 @@ p{
 	cursor:pointer;
 	transform-origin: center center -8em;
 }
+
 figure {
-    display: block;
     -webkit-margin-before: 1em;
     -webkit-margin-after: 1em;
     -webkit-margin-start: 40px;
     -webkit-margin-end: 40px;
 }
+
 #stack figure:hover{
 	transform: rotateY(-90deg);
 }
-#stack figure:first-child>*{
+/*#stack figure:first-child>*{
 	border-top: 0;
-}
+}*/
+
 #stack figure > *{
 	position: absolute;
 	width:inherit;
@@ -137,13 +179,13 @@ figure {
 	border-top: .0625rem solid rgba(255, 255, 255 ,.1);
 	backface-visibility: hidden;
 }
+
 #stack figure div{
-	width:100%;
 	transform-origin: top center;
 	background: #006AAB;
 }
-#stack figure ul{
 
+#stack figure ul{
 	transform:rotateY(90deg) translateX(100%);
 	transform-origin: top right;
 	margin:0;
@@ -151,13 +193,14 @@ figure {
 	list-style:none;
 	width:100%;
 	background: #128AAE;
-
 }
+
 #stack ul li{
 	display: inline-block;
-	/*vertical-align: middle;*/
 	border-right:.0625rem solid rgba(255, 255, 255, .1);
+	padding-top: 4px;
 }
+
 p,li,a, #wea-de{
 	font-family: 'lato', sans-serif;
 	line-height: 1.2em;
@@ -172,6 +215,7 @@ a:hover{
 }
 #stack ul li:last-child{
 	border-right:none;
+	padding: 1px;
 }
 #stack ul.full li{
 	width:100%;
@@ -180,9 +224,9 @@ a:hover{
 	width:35%;
 }
 #stack ul.two li{
-
 	width:31.5%;
 }
+
 #search-bar{
 	width:150px;
 	position: absolute;
@@ -198,35 +242,32 @@ a:hover{
 
 /*CSS for the list of events displayed in the Events section*/
 #eventLst{
-  background: #FEF5E7;
-  margin-bottom:1px;
-  padding: 3px;
-  border-radius: 5px;   
+  background-color: #fff;
+  color: #000;
+  margin: 10px 20px;
+  padding: 10px;
+  border-radius: 5px;
 }
 
 #eventLst a {
   color: #0000FF;
+  font-size: 20px;
 }
 
 
-
-.tab{
-	    background-color: #ecf0f1;
-	    margin-top: 20px;
-}
 /*=========footer styling=============*/
-footer{
+nav {
 	font-family: 'lato', sans-serif;
 	line-height: 1.2em;
 	letter-spacing: .0166em;
-	color: #fff;
+	color: #aaa;
 	padding:10px 10px 10px 0px;
 	text-align: center;
-	 background: #006AAB;
-	margin-top: 20px;
-	height:100px;
-
+	background: #006AAB;
+	/*margin-top: 20px;*/
+	height:50px;
 }
+
 .social-icon{
 
 	display: inline-block;
@@ -238,21 +279,21 @@ footer{
 	height:30px;
 	background: none;
 }
-li{
 
+li{
 	display: inline-block;
 }        
 
 /*MAP STYLING*/
 
-#map{
+/*#map{
   
-}
+}*/
 
 /*Media Queries for 980px */
 
 /*Media Query for 768px Width*/
-@media screen and (max-width: 768px){
+/*@media screen and (max-width: 768px){
 
 	#stack{
 		left:180px;
@@ -261,9 +302,9 @@ li{
 }
 
 /*Media Query for 640px width*/
-@media only screen and (max-width: 640px) {
+/*@media only screen and (max-width: 640px) {*/
 
-	#stack{
+/*	#stack{
 		left:5px;
 
 	}
@@ -274,9 +315,9 @@ li{
     footer{
     	height:100px;
     }
-}
+}*/
 
-@media screen and (max-width: 460px){
+/*@media screen and (max-width: 460px){
 
 	#stack{
 		left:5px;
@@ -291,5 +332,4 @@ li{
     li{
     	margin-top: 10px;
     }
-	}
-
+	}*/

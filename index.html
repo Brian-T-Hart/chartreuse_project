@@ -1,69 +1,63 @@
 <!DOCTYPE html>
 <html>
 <head>
-
 	<meta charset="utf-8">
 	<title>Project#1</title>
 	<meta name="viewport" content="width=device-width, maximum-scale = 1.0, minimum-scale = 1.0, initial-scale=1.0" />
-	<link rel="stylesheet" media="(min-width: 500px)" href="">
-	<!-- Required for bootstrap-paginaotr -->
-	
 	<!-- bootstrap link -->
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 	<!-- stylesheet -->
 	<link rel="stylesheet" type="text/css" href="assets/css/style.css">
+	<!-- Google Map API -->
 	<script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false&libraries=places&language=en-AU"></script>
-	<!-- Moment.JS Link -->
+	<!-- Moment.js -->
 	<script src="https://cdn.jsdelivr.net/momentjs/2.12.0/moment.min.js"></script>
 </head>
+
 <body onload="autocomplete()">
 
-	<div class="container">
-	<div class="jumbotron">
-		<h1>Travel Events</h1>
-	</div>
+	<nav class="navbar navbar-default navbar-fixed-top">
+		<div class="container container-fluid">
+			<div class="navbar-heading text-left">
+				<h2>Local Events</h2>
+			</div>
+		</div>
+	</nav>
 		 
-	<article>
-	<div class="row">
-		<div class="fullwidth">
-			<div id="pl-50-0" class="panel-grid panel-no-style">
+	<article> <!-- is this necessary? -->
+	<div class="row container-fluid">
+		<div id="stackContainer">
+			<!-- <div id="pl-50-0" class="panel-grid panel-no-style"> -->
 				<div id="stack">
 					<figure>
-						<div><p>Search City</p></div>
-							<ul class="two">
-							<li><input type="text" name="location" class="form-control" placeholder="City" id="search-bar"/>
-							<li><button class="btn btn-default" type="submit" id="submit-id"><i class="glyphicon glyphicon-search"></i></button></li>
-							</li>
-						</ul>
+						<div>
+							<form>
+								<p>Search City</p></div>
+								<ul class="two">
+								<li><input type="text" name="location" class="form-control" placeholder="City" id="search-bar" />
+								<li><button class="btn btn-default" type="submit" id="submit-id" onclick="getEventsToUI('music')"><i class="glyphicon glyphicon-search"></i></button></li>
+								</li>
+								</ul>
+							</form>
 					</figure>
 					<figure>
 						<div>
 							<span class="city" id="wea-de"><p>Local Weather</p></span>
-				        	<span class="country" id="wea-de"></span> 
+				        	<span class="country" id="wea-de"></span>
 				        	<span class="temp" id="wea-de"></span>
-				        	<span class="time" id="wea-de"></span>
 						</div>
 						<ul class="two">
-							<!-- <li class="skies"><img class="iconImage"/></li> -->
 							<li class="humidity"></li>
 							<li class="sunrise"></li>
 							<li class="sunset"></li>		
 						</ul>
 					</figure>
 					<figure>
-						<div><p>Travel Sites</p></div>
+						<div><p>Choose Event Type</p></div>
 					<ul class="two">
-						<li><a id="fly" href="#">Fly</a></li>
-						<li><a id="hotels" href="#">Hotels</a></li>
-					</ul>
-					</figure>
-
-					<figure>
-						<div><p>Choose Dates</p></div>
-					<ul class="two">
-						<li><a id="today" href="#"></a></li>
-						<li><a id="tomorrow" href="#"></a></li>
-						<li><a id="dayafter" href="#"></a></li>
+						<li><input type="button"  id="btnGetMusicEvents" onclick="getEventsToUI('music')" value="Music" /></li>
+						<li><input type="button" id="btnGetBusinessEvents" onclick="getEventsToUI('business')" value="Business"/></li>
+						<li><input type="button" id="btnGetFamilyEvents" onclick="getEventsToUI('family')" value="Family"/></li>
 					</ul>
 					</figure>
 				</div>
@@ -72,65 +66,27 @@
 	</div>
 	</article>
 
-	<div class="tab">
-	  <button class="tablinks" id="btnFreeEvents" onclick="getEvents('free')">Free Events</button>
-	  <button class="tablinks" id="btnPopularEvents" onclick="getEvents('paid')">Popular Events</button>
-	  <button class="tablinks" id="btnHotels" onclick="myFunction('Hotels')">Hotels</button>
+ <!-- Display Section of Events -->
+ <div class="row">
+	<div id="eventsDisplay" class="col-md-6">Test</div>
 	</div>
 
-	<div id="displayInfo" class="tabcontent"></div>
-	<div id="displayMap">
-		
-	</div>
-<!-- 
-		<div class="row">
-		<div class="col-sm-12">
-			<br>
-			<div class="panel panel-primary">
-				<div class="panel-heading">
-					<div class="panel-body" id="allSections">				
-						<div class="well well-sm" id="article-weather"><b>Weather: </b>
-						<span class="city"></span>
-				        <span class="country"></span> 
-				        <span class="humidity"></span>
-				        <span class="temp"></span>
-				        <span class="skies"><img class="iconImage"/></span> 
-
-						</div>
-						
-						<div class="well" id="article-travel">Travel Section</div>
-						<div class="well" id="article-events">Events
-							<button  type="submit" id="btnFree">Free</button>
-							<button  type="submit" id="btnPaid">Paid</button>
-						</div>						
-					</div>
-				</div>
-			</div>
-
-		</div> -->
-	<!-- </div> -->
-
+<!-- <nav id="footer" class="navbar navbar-default navbar-fixed-bottom">
+	<div class="mt-5">
+	  	@copyright Chartreuse_Project#1  -->
+<!--   		<ul class="social-icon">
+			<li><a href="https://www.facebook.com/" target="_blank" ><img src="assets/images/facebook.png" alt="facebook" id="socialiconImg"></a></li>
+				<li><a href="https://twitter.com/" target="_blank">
+				<img src="assets/images/twitter.jpg" alt="twitter" id="socialiconImg"></a></li>
 	
-</div>
-
-<footer class="mt-5">
-
-  	@copyright Chartreuse_Project#1
-  	
-  	<ul class="social-icon">
-		<li><a href="https://www.facebook.com/" ><img src="assets/images/facebook.png" alt="facebook" id="socialiconImg"></a></li>
+			<li><a href="https://github.com" target="_blank">
+				<img src="assets/images/github.png" alt="github" id="socialiconImg"></a></li>
 	
-		<li><a href="https://twitter.com/">
-		<img src="assets/images/twitter.jpg" alt="twitter" id="socialiconImg"></a></li>
-	
-		<li><a href="https://github.com">
-		<img src="assets/images/github.png" alt="github" id="socialiconImg"></a></li>
-	
-		<li><a href="https://linkedin.com">
-		<img src="assets/images/linkedin.png" alt="linkedin" id="socialiconImg"></a></li>
-	</ul>
-	
-</footer>
+			<li><a href="https://linkedin.com" target="_blank">
+				<img src="assets/images/linkedin.png" alt="linkedin" id="socialiconImg"></a></li>
+		</ul> -->
+<!-- 	</div>
+</nav> -->
 
 	<script type="text/javascript">
   
@@ -150,8 +106,10 @@
 	
 	<!-- Latest compiled and minified JavaScript -->
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-	<!-- <script type="text/javascript" src="js/main.js"></script> -->
+
 	<script type="text/javascript" src="assets/javascript/app.js"></script>
+	<script type="text/javascript" src="http://api.eventful.com/js/api"></script>
+	<script type="text/javascript" src="assets/javascript/events.js"></script>
 	
 	<script>
 	function initMap() {
@@ -167,9 +125,5 @@
 	}
     </script>
 	
-	<script   
-	src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDTgS4kfcZbPUE8-L8Adah8y2AlOPkTwHM&callback=initMap&libraries=places">
-	</script>
-
 </body>
 </html>
