@@ -23,7 +23,7 @@
 			</div>
 		</div>
 	</nav>
-		 
+
 	<article> <!-- is this necessary? -->
 	<div class="row container-fluid">
 		<div id="stackContainer">
@@ -49,19 +49,19 @@
 						<ul class="two">
 							<li class="humidity"></li>
 							<li class="sunrise"></li>
-							<li class="sunset"></li>		
+							<li class="sunset"></li>
 						</ul>
 					</figure>
 					<figure>
 						<div><p>Choose Event Type</p></div>
 					<ul class="two">
-						<li><input type="button"  id="btnGetMusicEvents" onclick="getEventsToUI('music')" value="Music" /></li>
-						<li><input type="button" id="btnGetBusinessEvents" onclick="getEventsToUI('business')" value="Business"/></li>
-						<li><input type="button" id="btnGetFamilyEvents" onclick="getEventsToUI('family')" value="Family"/></li>
+						<li><input type="button" class="btnEvents"  id="btnGetMusicEvents" onclick="getEventsToUI('music')" value="Music" /></li>
+						<li><input type="button" class="btnEvents" id="btnGetBusinessEvents" onclick="getEventsToUI('business')" value="Business"/></li>
+						<li><input type="button" class="btnEvents" id="btnGetFamilyEvents" onclick="getEventsToUI('family')" value="Family"/></li>
 					</ul>
 					</figure>
 				</div>
-			</div>	
+			</div>
 		</div>
 	</div>
 	</article>
@@ -78,10 +78,10 @@
 			<li><a href="https://www.facebook.com/" target="_blank" ><img src="assets/images/facebook.png" alt="facebook" id="socialiconImg"></a></li>
 				<li><a href="https://twitter.com/" target="_blank">
 				<img src="assets/images/twitter.jpg" alt="twitter" id="socialiconImg"></a></li>
-	
+
 			<li><a href="https://github.com" target="_blank">
 				<img src="assets/images/github.png" alt="github" id="socialiconImg"></a></li>
-	
+
 			<li><a href="https://linkedin.com" target="_blank">
 				<img src="assets/images/linkedin.png" alt="linkedin" id="socialiconImg"></a></li>
 		</ul> -->
@@ -89,28 +89,28 @@
 </nav> -->
 
 	<script type="text/javascript">
-  
+
     function myFunction(eventType) {
       if(eventType === "FreeEvents") {
         document.getElementById("displayInfo").innerHTML = "Free Events";
       } else if (eventType === "PopularEvents") {
-        document.getElementById("displayInfo").innerHTML = "Popular Events";    
+        document.getElementById("displayInfo").innerHTML = "Popular Events";
       } else if (eventType === "Hotels") {
-        document.getElementById("displayInfo").innerHTML = "Hotels";    
+        document.getElementById("displayInfo").innerHTML = "Hotels";
       }
     }
   </script>
 
 	<script src="https://www.gstatic.com/firebasejs/live/3.0/firebase.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-	
+
 	<!-- Latest compiled and minified JavaScript -->
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 
 	<script type="text/javascript" src="assets/javascript/app.js"></script>
 	<script type="text/javascript" src="http://api.eventful.com/js/api"></script>
 	<script type="text/javascript" src="assets/javascript/events.js"></script>
-	
+
 	<script>
 	function initMap() {
 	    var mapProp= {
@@ -124,6 +124,6 @@
 							{types:['geocode']});
 	}
     </script>
-	
+
 </body>
 </html>
