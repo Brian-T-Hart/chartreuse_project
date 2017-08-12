@@ -6,12 +6,6 @@ html {
 	height: 100%;
 }
 
-/*.col-md-1{
-	color:#fff;
-	left:20px;
-	top:10px;
-}*/
-
 body{
 	background-image: url("../images/sunrise.jpg");
 	background-size:cover;
@@ -20,30 +14,15 @@ body{
 	padding: 80px 0px;
 }
 
-/*CSS for the list of events displayed in the Events section*/
-/*#eventLst{
-  background-color: #fff;
-  color: #000;
-  margin: 10px 20px;
-  padding: 10px;
-  border-radius: 5px;
-  position: relative;
-  position: 0 0 0 0;
-}
-
-#eventLst a {
-  color: #0000FF;
-  font-size: 20px;
-}*/
-
-/*Choose Event Type in Menu*/
-input {
-	background-color: #006aab;
-	color: white;
-	/*border: 1px solid #ccc*/
-	/*border-radius: 4px*/
-	font-size: 14px;
-	display: block;
+input{
+	text-decoration: none;
+	font-family: 'lato', sans-serif;
+	line-height: 1.2em;
+	letter-spacing: .0166em;
+	font-size: 15px;
+	color: #fff;
+	background-color: #128AAE;
+	border: none;
 }
 
 /*Search Results*/
@@ -61,32 +40,21 @@ input {
 	margin-right: 20px;
 }
 
-.eventList, #mapDisplay{
+.eventList {
 	color:white;
-/*	margin-left: 25px;*/
-	padding: 15px;
-	line-height: 1.5em;
-	border: 1.5px solid white;
+	display: block;
+	margin: auto;
+	/*margin-left: 20px;*/
+	/*padding: 10px;*/
+	line-height: 1.4em;
+	border: 2px solid white;
 	border-radius: 10px;
-    background-color:  #006AAB;
-    margin-top: 10px;
+    background-color:  #006AAB ;
+    margin-top: 15px;
+    width: 80%;
 }
-
-
-#mapDisplay{
-	float: left;
-	height: 200px;
-	width: 200px;
-	position: absolute;
-    left: 43%;
-}
-
 #eventsDisplay{
-	float: left;
-	width: 60%;
-	position: absolute;
-    left: 20%;
-    top: 85%;
+	font-family: 'lato', sans-serif;
 }
 
 .link{
@@ -95,18 +63,14 @@ input {
 	font-style: italic;
 }
 
-/*.container{
-	max-width: 980px;
-	margin:0px auto 0px auto;
-}*/
-
-/*.jumbotron{
-	background: none;
-	text-align: center;
-	color:#fff;
-	margin: 0;
-}*/
-/*=========================== Main body Styling============================*/
+#mapDisplay{
+	height: 400px;
+	display: none;
+	position: absolute;
+	/*position: fixed !important;
+	bottom: 110px !important;
+	right: 100px !important;*/
+}
 
 /* Style the tab */
 div.tab {
@@ -172,9 +136,7 @@ div.tab button.active {
 	overflow-x:hidden;
 	overflow-x: visible;
 }
-/*div{
-	color:black;
-}*/
+
 
 p{
 	text-align: center;
@@ -319,28 +281,57 @@ nav {
 li{
 	display: inline-block;
 }
+@media only screen and (min-width: 980px) {
 
-/*MAP STYLING*/
-
-/*#map{
-
-}*/
-
-/*Media Queries for 980px */
-
-/*Media Query for 768px Width*/
-/*@media screen and (max-width: 768px){
-
-	#stack{
-		left:180px;
+	#mapDisplay{
+		height: 400px;
+		width: 400px;
+		display: none;
+		position: fixed !important;
+			bottom:100px !important;
+		right: 100px !important;
+		margin-top:10px;
 	}
-
 }
 
-/*Media Query for 640px width*/
-@media only screen and (max-width: 640px) {
 
-	#stack{
+@media only screen and (min-width: 640px) {
+
+	#mapDisplay{
+		height: 400px;
+		width: 400px;
+		display: none;
+		position: fixed !important;
+			bottom:110px !important;
+		right: 100px !important;
+	}
+}
+
+/*@media only screen and (min-width: 320px) {
+	#mapDisplay{
+		height: 400px;
+		display: none;
+		position: relative !important;*/
+		/*bottom: 110px !important;
+		right: 100px !important;*/
+	/*}*/
+	/*#eventsDisplay{
+    left: 5%;
+    top: 35%;
+    width: 90%;
+    }*/
+/*}*/
+
+
+/*@media only screen and (max-width: 640px) {
+
+	#mapDisplay{
+		height: 400px;
+		display: none;
+		position: static !important;
+		bottom: 700px !important;
+	}*/
+	/*#stack{
 		left:5px;
 
 	}
@@ -360,29 +351,20 @@ li{
 
 	#eventsDisplay{
     left: 5%;
-    top: 90%;
+    top: 60%;
     width: 90%;
     }
 
     #mapDisplay{
 	left: 23%;
-    }
+    }*/
 
 }
+/*@media only screen and (max-width: 320px) {
 
-/*@media screen and (max-width: 460px){
-
-	#stack{
-		left:5px;
-	}
-	body{
-		background-size:cover;
-		height:100%;
-	}
-    footer{
-    	height:100px;
+	#eventsDisplay{
+    left: 5%;
+    top: 50%;
+    width: 90%;
     }
-    li{
-    	margin-top: 10px;
-    }
-	}*/
+}*/

@@ -3,8 +3,8 @@ function dayAndNight(){
 
   var current = new Date();
   var day_night = current.getHours();
-  console.log(current);
-  console.log(day_night);
+  // console.log(current);
+  // console.log(day_night);
 
     if (day_night > 6 && day_night < 19){
       //Day
@@ -30,7 +30,7 @@ $("#submit-id").click(function(){
   userInput = $('#search-bar').val();
   getWeather(); //GETS WEATHER FOR THE SEARCH CITY
   getEventsToUI('music'); //DEFAULT CITY SEARCH WOULD DISPLAY MUSIC EVENTS
-  displayOnMap(); //DISPLAY THE SELECTED CITY ON THE MAP
+  displayOnMap(userInput); //DISPLAY THE SELECTED CITY ON THE MAP
 });
 
 //using weather api key getting weather details
@@ -46,35 +46,35 @@ $("#submit-id").click(function(){
       // We store all of the retrieved data inside of an object called "response"
       .done(function(response) {
         // Transfer content to HTML
-        $(".city").html( response.name);
+        $(".city").html( response.name + ', ');
         $(".country").html(response.sys.country);
         $(".humidity").html("Humidity: " + response.main.humidity+" %");
         $(".temp").html(Math.round(response.main.temp)+" &#x2109");
 
-        /*
-        * Code below is to set the sunrise & sunset time for the city selected for event search
-        */
+
         var sunrise = response.sys.sunrise;
         var x = moment(sunrise*1000).format('h:mm A');
         var sunset = response.sys.sunset;
         var y = moment(sunset*1000).format('h:mm A');
-        // var date = new Date(sunrise*1000);
-        // var minutes = date.getMinutes() < 10 ? '0' + date.getMinutes() : date.getMinutes();
-        // var formattedSunrise ="Sunrise " +  date.getHours() + ":" + minutes;
+
         $(".sunrise").html('Sunrise ' + x);
-
-
-        // date = new Date(sunset*1000);
-        // minutes = date.getMinutes() < 10 ? '0' + date.getMinutes() : date.getMinutes();
-        // var formattedSunset = "Sunset: " + date.getHours() + ":" + minutes;
-
         $(".sunset").html(' Sunset ' + y);
 
-        // Below lines of code show the icon for "skies". For now we have commented this code.
-        // iconImg = response.weather[0].icon;
-        // $(".iconImage").attr("src", "http://openweathermap.org/img/w/"+iconImg+".png");
-        // $(".iconImage").attr("alt", response.weather[0].description);
-
+      var lat = response.coord.lat;
+      //console.log(lat);
+      var lng = response.coord.lon;
+      // console.log(long);
+      var api_key = "G1LHK198LBCB";
+      queryURLTime = "http://vip.timezonedb.com/v2/get-time-zone?key="+ api_key + "&format=json&by=position&lng=" + lng + "&lat=" + lat;
+        console.log(queryURLTime);
+        $.ajax({
+           url: queryURLTime,
+           method: "GET"
+        }).done(function(response) {
+          console.log(response);
+        //appends the country name to the html
+        $('.localTime').html(moment(response.formatted).format("hh:mm A") + ' - ');
+        });
 
         cbHandler(response);
       });
@@ -84,16 +84,13 @@ $("#submit-id").click(function(){
     callBackResponse = weatherDetails;
   }
 
-//Displays the Map section
-// function initMap() {
-//   //var mapsAPIKey = "AIzaSyDTgS4kfcZbPUE8-L8Adah8y2AlOPkTwHM"; //API Key for Google Maps Javascript API
-//   var latlng = {lat: -25.363, lng: 131.044};
-//   var map = new google.maps.Map(document.getElementById('#displayMap'), {
-//     zoom: 4,
-//     center: latlng
-//   });
-//   var marker = new google.maps.Marker({
-//     position: latlng,
-//     map: map
-//   });
-// }
+// clock function
+(function () {
+  var clockElement = document.getElementById("clock");
+  function updateClock(clock) {
+    clock.innerHTML = new Date().toLocaleTimeString();
+  }
+  setInterval(function() {
+      updateClock(clockElement);
+  }, 1000);
+}());

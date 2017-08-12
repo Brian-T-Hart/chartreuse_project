@@ -35,9 +35,6 @@ function queryEvents(eventType, address, noOfRecords, dateRange)
    };
 
    EVDB.API.call("/events/search", oArgs, function(oData) {
-      // console.log(events);
-      console.log(oData);
-
       var cloneEvent;
       for (var i=0; i<oData.events.event.length; i++){
 
@@ -64,7 +61,7 @@ function queryEvents(eventType, address, noOfRecords, dateRange)
 }
 
 function createEventDiv(event){
-   var eventDIV = "<div class = 'row eventList'><div class='col-md-auto'><a href='"+
+   var eventDIV = "<div class = 'row eventList'><div><a href='"+
                      event.url+
                      "'><img id ='eventImage' class= 'img-thumbnail project' src='"+
                      event.imgSrc+
@@ -72,9 +69,12 @@ function createEventDiv(event){
                      "'></a></div><div><span class='title'>"+
                      "<h4>" +
                      event.title+
-                     "</h4></span><br>"+
-                     event.venue_address
-                     +"<br><span>"+
+                     "</h4></span>"+
+                     "<a class='link' href='#' onclick='displayAddressOnMap(this);return false;' data-info='"+
+                     event.venue_address+
+                     "'>"+
+                     event.venue_address+
+                     "</a></span><br><span>"+
                      event.city+","+event.country+
                      "</span><br><span>" +
                      "<a class='link' href='"+
@@ -85,6 +85,12 @@ function createEventDiv(event){
             var eventsHolder = $('#eventsDisplay');
             eventsHolder.append(eventDIV);
 
+}
+
+//TO DISPLAY THE SELECTED EVENT ADDRESS ON THE ADJACENT MAP
+function displayAddressOnMap(item){
+   displayOnMap(item.getAttribute('data-info'));
+   //console.log(item.getAttribute('data-info'));
 }
 
 //CALLABLE FUNCTION FROM UI BASED UPON THE EVENT TYPE
