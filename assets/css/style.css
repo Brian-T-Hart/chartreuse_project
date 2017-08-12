@@ -25,13 +25,11 @@ input{
 	border: none;
 }
 
-/*Search Results*/
 #search-result {
 	width: 90%;
 	display: block;
 	margin: auto;
 	margin-top: 10px;
-	/*background-color: #337ab7;*/
 }
 
 #eventImage{
@@ -44,17 +42,17 @@ input{
 	color:white;
 	display: block;
 	margin: auto;
-	/*margin-left: 20px;*/
-	/*padding: 10px;*/
 	line-height: 1.4em;
 	border: 2px solid white;
 	border-radius: 10px;
-    background-color:  #006AAB ;
-    margin-top: 15px;
-    width: 80%;
+  background-color:  #006AAB;
+  margin-top: 15px;
+  width: 85%;
 }
+
 #eventsDisplay{
 	font-family: 'lato', sans-serif;
+	margin-top: 15px;
 }
 
 .link{
@@ -65,11 +63,9 @@ input{
 
 #mapDisplay{
 	height: 400px;
+	width: 40%;
 	display: none;
-	position: absolute;
-	/*position: fixed !important;
-	bottom: 110px !important;
-	right: 100px !important;*/
+	margin-top: 30px;
 }
 
 /* Style the tab */
@@ -99,6 +95,7 @@ div.tab button:hover {
 div.tab button.active {
     background-color:  #128AAE;
 }
+
 .tablinks, #displayInfo{
 	color:#fff;
 	font-family: 'lato', sans-serif;
@@ -112,12 +109,9 @@ div.tab button.active {
     display: none;
     padding: 6px 12px;
     font-family: 'lato', sans-serif;
-
-    /*border: 1px solid #ccc;
-    border-top: none;*/
 }
 
-/*============div box styling which contains local weather , Travel sites, and events==========*/
+/*div box styling which contains local weather , Travel sites, and events*/
 #stackContainer {
 	width: 310px;
 	display: block;
@@ -137,7 +131,6 @@ div.tab button.active {
 	overflow-x: visible;
 }
 
-
 p{
 	text-align: center;
 	font-size: 10px;
@@ -149,7 +142,6 @@ h2{
 }
 
 #stack figure{
-	/*position: relative;*/
 	margin:0 1em;
 	height: 5ch;
 	width:16em;
@@ -170,9 +162,6 @@ figure {
 #stack figure:hover{
 	transform: rotateY(-90deg);
 }
-/*#stack figure:first-child>*{
-	border-top: 0;
-}*/
 
 #stack figure > *{
 	position: absolute;
@@ -239,14 +228,13 @@ a:hover{
 	top:5px;
 	left:50px;
 }
+
 .btn{
 	position: absolute;
 	top:5px;
 	left:205px;
     color: #3596e0;
 }
-
-
 
 /*Heading and Footer*/
 .navbar{
@@ -257,21 +245,15 @@ a:hover{
 nav {
 	font-family: 'lato', sans-serif;
 	line-height: 1.2em;
-	/*letter-spacing: .0166em;*/
-	/*color: #aaa;*/
 	padding:8px 8px 8px 8px;
 	text-align: center;
-	/*background: #006AAB;*/
-	/*margin-top: 20px;*/
-	/*height:50px;*/
 }
 
 .social-icon{
-
 	display: inline-block;
 	margin:0px 5px;
-
 }
+
 #socialiconImg{
 	width:30px;
 	height:30px;
@@ -281,90 +263,52 @@ nav {
 li{
 	display: inline-block;
 }
-@media only screen and (min-width: 980px) {
+
+@media only screen and (max-width: 980px) {
 
 	#mapDisplay{
-		height: 400px;
-		width: 400px;
-		display: none;
-		position: fixed !important;
-			bottom:100px !important;
-		right: 100px !important;
-		margin-top:10px;
+		height: 300px;
+		width: 80%;
+		margin: 10%;
+		margin-top: 15px;
+	}
+	h4{
+		font-size: 12px;
+		margin-bottom: 0px;
+	}
+	#clock {
+		font-size: 12px;
 	}
 }
 
-
-@media only screen and (min-width: 640px) {
-
+@media only screen and (max-width: 768px) {
 	#mapDisplay{
-		height: 400px;
-		width: 400px;
-		display: none;
-		position: fixed !important;
-			bottom:110px !important;
-		right: 100px !important;
+		height: 300px;
+		width: 80%;
+		margin: 10%;
+		margin-top: 15px;
 	}
-}
-
-/*@media only screen and (min-width: 320px) {
-	#mapDisplay{
-		height: 400px;
-		display: none;
-		position: relative !important;*/
-		/*bottom: 110px !important;
-		right: 100px !important;*/
-	/*}*/
-	/*#eventsDisplay{
-    left: 5%;
-    top: 35%;
-    width: 90%;
-    }*/
-/*}*/
-
-
-/*@media only screen and (max-width: 640px) {
-
-	#mapDisplay{
-		height: 400px;
-		display: none;
-		position: static !important;
-		bottom: 700px !important;
-	}*/
-	/*#stack{
-		left:5px;
-
+	h2{
+		font-size: 12px;
 	}
-	body{
-		background-size:cover;
-		height:100%;
-	}
-    footer{
-    	height:100px;
-    }
 
-    #eventImage{
-	width: 35%;
+	h4{
+		font-size: 8px;
+	}
+
+	nav{
+		font-size: 8px;
+	}
+
+  #eventImage{
+	width: 40%;
 	float: right;
 	border-width: 0.5px;
+	margin-right: 0px;
 	}
 
 	#eventsDisplay{
-    left: 5%;
-    top: 60%;
-    width: 90%;
+    width: 100%;
+		margin: 0px;
     }
-
-    #mapDisplay{
-	left: 23%;
-    }*/
-
 }
-/*@media only screen and (max-width: 320px) {
-
-	#eventsDisplay{
-    left: 5%;
-    top: 50%;
-    width: 90%;
-    }
-}*/
