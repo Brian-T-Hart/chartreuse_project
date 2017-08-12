@@ -125,17 +125,17 @@ function createMarker(place, searchType){
 	var location = place.geometry.location;
 	var icon;
 	if(searchType === 'restaurant'){
-		icon = 'http://maps.google.com/mapfiles/kml/pal2/icon55.png';
+		icon = 'https://maps.google.com/mapfiles/kml/pal2/icon55.png';
 	} else if(searchType === 'atm'){
-		icon = 'http://maps.google.com/mapfiles/kml/pal2/icon50.png';
+		icon = 'https://maps.google.com/mapfiles/kml/pal2/icon50.png';
 	} else if(searchType === 'hospital'){
-		icon = 'http://maps.google.com/mapfiles/kml/pal3/icon38.png';
+		icon = 'https://maps.google.com/mapfiles/kml/pal3/icon38.png';
 	} else if(searchType === 'pharmacy'){
-		icon = 'http://maps.google.com/mapfiles/kml/pal2/icon1.png';
+		icon = 'https://maps.google.com/mapfiles/kml/pal2/icon1.png';
 	} else if(searchType === 'gas-station'){
-		icon = 'http://maps.google.com/mapfiles/kml/pal2/icon29.png';
+		icon = 'https://maps.google.com/mapfiles/kml/pal2/icon29.png';
 	} else if(searchType === 'parking'){
-		icon = 'http://maps.google.com/mapfiles/kml/pal4/icon15.png';
+		icon = 'https://maps.google.com/mapfiles/kml/pal4/icon15.png';
 	}
 	var serviceMarker = new google.maps.Marker({
 		map:map,
