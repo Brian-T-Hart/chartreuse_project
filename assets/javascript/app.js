@@ -65,7 +65,7 @@ $("#submit-id").click(function(){
       var lng = response.coord.lon;
       // console.log(long);
       var api_key = "G1LHK198LBCB";
-      queryURLTime = "http://vip.timezonedb.com/v2/get-time-zone?key="+ api_key + "&format=json&by=position&lng=" + lng + "&lat=" + lat;
+      queryURLTime = "https://vip.timezonedb.com/v2/get-time-zone?key="+ api_key + "&format=json&by=position&lng=" + lng + "&lat=" + lat;
         console.log(queryURLTime);
         $.ajax({
            url: queryURLTime,
