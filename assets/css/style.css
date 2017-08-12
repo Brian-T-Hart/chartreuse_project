@@ -20,29 +20,81 @@ body{
 	padding: 80px 0px;
 }
 
+/*CSS for the list of events displayed in the Events section*/
+/*#eventLst{
+  background-color: #fff;
+  color: #000;
+  margin: 10px 20px;
+  padding: 10px;
+  border-radius: 5px;
+  position: relative;
+  position: 0 0 0 0;
+}
+
+#eventLst a {
+  color: #0000FF;
+  font-size: 20px;
+}*/
+
+/*Choose Event Type in Menu*/
+input {
+	background-color: #006aab;
+	color: white;
+	/*border: 1px solid #ccc*/
+	/*border-radius: 4px*/
+	font-size: 14px;
+	display: block;
+}
+
+/*Search Results*/
+#search-result {
+	width: 90%;
+	display: block;
+	margin: auto;
+	margin-top: 10px;
+	/*background-color: #337ab7;*/
+}
+
 #eventImage{
 	float:left;
 	padding: 5px;
 	margin-right: 20px;
 }
-.eventList{
+
+.eventList, #mapDisplay{
 	color:white;
-	margin-left: 20px;
-	padding: 10px;
+/*	margin-left: 25px;*/
+	padding: 15px;
 	line-height: 1.5em;
-	border: 2px solid white;
+	border: 1.5px solid white;
 	border-radius: 10px;
-    background-color:  #006AAB ;
-    margin-top: 15px;
+    background-color:  #006AAB;
+    margin-top: 10px;
 }
+
+
+#mapDisplay{
+	float: left;
+	height: 200px;
+	width: 200px;
+	position: absolute;
+    left: 43%;
+}
+
 #eventsDisplay{
-	margin-left: 40px;
+	float: left;
+	width: 60%;
+	position: absolute;
+    left: 20%;
+    top: 85%;
 }
+
 .link{
 	color:yellow;
 	text-decoration: underline;
 	font-style: italic;
 }
+
 /*.container{
 	max-width: 980px;
 	margin:0px auto 0px auto;
@@ -91,14 +143,6 @@ div.tab button.active {
 	font-size: 15px;
 }
 
-#displayPanel {
-	width: 80%;
-	display: block;
-	margin: auto;
-	margin-top: 30px;
-	background-color: #337ab7;
-}
-
 /* Style the tab content */
 .tabcontent {
     display: none;
@@ -114,7 +158,7 @@ div.tab button.active {
 	width: 310px;
 	display: block;
 	margin: auto;
-	margin-top: 60px;
+	margin-top: 35px;
 }
 
 #stack{
@@ -237,35 +281,27 @@ a:hover{
 	position: absolute;
 	top:5px;
 	left:205px;
-     color: #3596e0;
-}
-
-/*CSS for the list of events displayed in the Events section*/
-#eventLst{
-  background-color: #fff;
-  color: #000;
-  margin: 10px 20px;
-  padding: 10px;
-  border-radius: 5px;
-}
-
-#eventLst a {
-  color: #0000FF;
-  font-size: 20px;
+    color: #3596e0;
 }
 
 
-/*=========footer styling=============*/
+
+/*Heading and Footer*/
+.navbar{
+	background-color: #0B071A;
+	color: white;
+}
+
 nav {
 	font-family: 'lato', sans-serif;
 	line-height: 1.2em;
-	letter-spacing: .0166em;
-	color: #aaa;
-	padding:10px 10px 10px 0px;
+	/*letter-spacing: .0166em;*/
+	/*color: #aaa;*/
+	padding:8px 8px 8px 8px;
 	text-align: center;
-	background: #006AAB;
+	/*background: #006AAB;*/
 	/*margin-top: 20px;*/
-	height:50px;
+	/*height:50px;*/
 }
 
 .social-icon{
@@ -282,12 +318,12 @@ nav {
 
 li{
 	display: inline-block;
-}        
+}
 
 /*MAP STYLING*/
 
 /*#map{
-  
+
 }*/
 
 /*Media Queries for 980px */
@@ -302,9 +338,9 @@ li{
 }
 
 /*Media Query for 640px width*/
-/*@media only screen and (max-width: 640px) {*/
+@media only screen and (max-width: 640px) {
 
-/*	#stack{
+	#stack{
 		left:5px;
 
 	}
@@ -315,7 +351,24 @@ li{
     footer{
     	height:100px;
     }
-}*/
+
+    #eventImage{
+	width: 35%;
+	float: right;
+	border-width: 0.5px;
+	}
+
+	#eventsDisplay{
+    left: 5%;
+    top: 90%;
+    width: 90%;
+    }
+
+    #mapDisplay{
+	left: 23%;
+    }
+
+}
 
 /*@media screen and (max-width: 460px){
 
