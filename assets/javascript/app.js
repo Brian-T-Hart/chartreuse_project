@@ -35,7 +35,7 @@ $("#submit-id").click(function(){
 
 //using weather api key getting weather details
   function getWeather(){
-    var queryURL = "http://api.openweathermap.org/data/2.5/weather?q="+userInput+"&units=imperial&appid=" + APIKey;
+    var queryURL = "https://api.openweathermap.org/data/2.5/weather?q="+userInput+"&units=imperial&appid=" + APIKey;
     //console.log(queryURL);
     var iconImg;
     // Here we run our AJAX call to the OpenWeatherMap API
