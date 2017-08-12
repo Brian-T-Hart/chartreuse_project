@@ -4,12 +4,12 @@
 	<meta charset="utf-8">
 	<title>Project#1</title>
 	<meta name="viewport" content="width=device-width, maximum-scale = 1.0, minimum-scale = 1.0, initial-scale=1.0" />
-	<!-- bootstrap link -->
+	<!-- bootstrap link  -Latest compiled and minified CSS -->
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 	<!-- stylesheet -->
 	<link rel="stylesheet" type="text/css" href="assets/css/style.css">
 	<!-- Google Map API -->
-	<script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false&libraries=places&language=en-AU"></script>
+	<!-- <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false&libraries=places&language=en-AU"></script> -->
 	<!-- Moment.js -->
 	<script src="https://cdn.jsdelivr.net/momentjs/2.12.0/moment.min.js"></script>
 </head>
@@ -18,27 +18,35 @@
 
 	<nav class="navbar navbar-default navbar-fixed-top">
 		<div class="container container-fluid">
-			<div class="navbar-heading text-left">
-				<h2>Local Events</h2>
+			<div class="row">
+				<div class="col-md-6">
+			<!-- <div class="navbar-heading text-left"> -->
+				<h2>Local Event Search</h2>
+				</div>
+				<div class="col-md-6">
+				<h4 style="font-style: italic;">Discover events that match your interests!</h4>
+			<!-- </div> -->
+				</div>
 			</div>
 		</div>
 	</nav>
-		 
-	<article> <!-- is this necessary? -->
-	<div class="row container-fluid">
-		<div id="stackContainer">
-			<!-- <div id="pl-50-0" class="panel-grid panel-no-style"> -->
+
+<!-- 	<article> -->
+	<div class="container container-fluid">
+		<div class="row" id="stackContainer">
 				<div id="stack">
 					<figure>
 						<div>
 							<form>
-								<p>Search City</p></div>
-								<ul class="two">
+								<p>Search City</p>
+						</div>
+							<ul class="two">
 								<li><input type="text" name="location" class="form-control" placeholder="City" id="search-bar" />
-								<li><button class="btn btn-default" type="submit" id="submit-id" onclick="getEventsToUI('music')"><i class="glyphicon glyphicon-search"></i></button></li>
+								<li><button class="btn btn-default" type="submit" id="submit-id"><i class="glyphicon glyphicon-search"></i></button></li>
 								</li>
-								</ul>
+							</ul>
 							</form>
+
 					</figure>
 					<figure>
 						<div>
@@ -47,13 +55,14 @@
 				        	<span class="temp" id="wea-de"></span>
 						</div>
 						<ul class="two">
-							<li class="humidity"></li>
 							<li class="sunrise"></li>
-							<li class="sunset"></li>		
+							<li class="humidity"></li>
+							<li class="sunset"></li>
 						</ul>
 					</figure>
+
 					<figure>
-						<div><p>Choose Event Type</p></div>
+						<div class="event-type"><p>Choose Event Type</p></div>
 					<ul class="two">
 						<li><input type="button"  id="btnGetMusicEvents" onclick="getEventsToUI('music')" value="Music" /></li>
 						<li><input type="button" id="btnGetBusinessEvents" onclick="getEventsToUI('business')" value="Business"/></li>
@@ -61,69 +70,63 @@
 					</ul>
 					</figure>
 				</div>
-			</div>	
+			</div>
 		</div>
 	</div>
-	</article>
-
+	<!-- </article> -->
  <!-- Display Section of Events -->
- <div class="row">
-	<div id="eventsDisplay" class="col-md-6">Test</div>
-	</div>
+ <div class="row" id="search-result">
+	<div class="col-md-2" id="mapDisplay" >Display Map:</div>
+	<!--!!!!! eventsDisplay's grid is defined in the events.js file -->
+	<div id="eventsDisplay"></div>
+ </div>
 
-<!-- <nav id="footer" class="navbar navbar-default navbar-fixed-bottom">
-	<div class="mt-5">
-	  	@copyright Chartreuse_Project#1  -->
+<nav id="footer" class="navbar navbar-default navbar-fixed-bottom">
+	<div style="font-style: italic;">
+	  	This website was developed with <span style="font-size:200%;color:red;">&hearts;</span> by Brian Hart, Prathibha Chunchu, Guiyu Zhao, Michael Osgood, and Michael Lazear.
 <!--   		<ul class="social-icon">
 			<li><a href="https://www.facebook.com/" target="_blank" ><img src="assets/images/facebook.png" alt="facebook" id="socialiconImg"></a></li>
-				<li><a href="https://twitter.com/" target="_blank">
+
+			<li><a href="https://twitter.com/" target="_blank">
 				<img src="assets/images/twitter.jpg" alt="twitter" id="socialiconImg"></a></li>
-	
+
 			<li><a href="https://github.com" target="_blank">
 				<img src="assets/images/github.png" alt="github" id="socialiconImg"></a></li>
-	
+
 			<li><a href="https://linkedin.com" target="_blank">
 				<img src="assets/images/linkedin.png" alt="linkedin" id="socialiconImg"></a></li>
 		</ul> -->
-<!-- 	</div>
-</nav> -->
+	</div>
+</nav>
 
-	<script type="text/javascript">
-  
-    function myFunction(eventType) {
-      if(eventType === "FreeEvents") {
-        document.getElementById("displayInfo").innerHTML = "Free Events";
-      } else if (eventType === "PopularEvents") {
-        document.getElementById("displayInfo").innerHTML = "Popular Events";    
-      } else if (eventType === "Hotels") {
-        document.getElementById("displayInfo").innerHTML = "Hotels";    
-      }
-    }
-  </script>
-
-	<script src="https://www.gstatic.com/firebasejs/live/3.0/firebase.js"></script>
+	<!-- <script src="https://www.gstatic.com/firebasejs/live/3.0/firebase.js"></script> -->
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-	
+
 	<!-- Latest compiled and minified JavaScript -->
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 
-	<script type="text/javascript" src="assets/javascript/app.js"></script>
+	<!-- EVENT API FROM EVENTFUL.COM -->
 	<script type="text/javascript" src="http://api.eventful.com/js/api"></script>
+	<!-- PROJECT SCRIPTS -->
+	<script type="text/javascript" src="assets/javascript/app.js"></script>
+	<script type="text/javascript" src="assets/javascript/maps.js"></script>
 	<script type="text/javascript" src="assets/javascript/events.js"></script>
-	
-	<script>
-	function initMap() {
-	    var mapProp= {
-		    center:new google.maps.LatLng(51.508742,-0.120850),
-		    zoom:5,
-		};
-		var map=new google.maps.Map(document.getElementById("displayMap"),mapProp);
-	}
-	function autocomplete(){
-		var autocomplete = new google.maps.places.Autocomplete((document.getElementById('search-bar')),
-							{types:['geocode']});
-	}
+
+	<!-- GOOGLE MAPS API -->
+	<script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDTgS4kfcZbPUE8-L8Adah8y2AlOPkTwHM&callback=initMap&libraries=places">
     </script>
-	
+
+	<script>
+	// function initMap() {
+	//     var mapProp= {
+	// 	    center:new google.maps.LatLng(51.508742,-0.120850),
+	// 	    zoom:5,
+	// 	};
+	// 	var map=new google.maps.Map(document.getElementById("displayMap"),mapProp);
+	// }
+
+    </script>
+
 </body>
 </html>

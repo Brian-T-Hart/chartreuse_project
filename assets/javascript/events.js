@@ -2,7 +2,7 @@
 var eventType = "music";
 var address;
 var dateRange = "2017080100-2017103000";
-var noOfRecords = 10; 
+var noOfRecords = 10;
 
 //CREATE AN EVENT OBJECT TO CAPTURE THE  EVENT RELATED INFORMAION
 
@@ -31,9 +31,9 @@ function queryEvents(eventType, address, noOfRecords, dateRange)
       where: address, //THIS COULD BE CITY NAME OR ADDRESS
       "date": dateRange, //"2017080100-2017103000"
       page_size: noOfRecords, //NO. OF RECORDS TO FETCH FROM THE QUERY
-      sort_order: "popularity", //SORTING RELEVANCE 
+      sort_order: "popularity", //SORTING RELEVANCE
    };
-   
+
    EVDB.API.call("/events/search", oArgs, function(oData) {
       // console.log(events);
       console.log(oData);
@@ -59,10 +59,9 @@ function queryEvents(eventType, address, noOfRecords, dateRange)
          cloneEvent = Object.assign({}, event);
          events.push(cloneEvent);
          createEventDiv(cloneEvent);
-      }   
-});
+      }
+   });
 }
-
 
 function createEventDiv(event){
    var eventDIV = "<div class = 'row eventList'><div class='col-md-auto'><a href='"+
@@ -81,13 +80,8 @@ function createEventDiv(event){
                      "<a class='link' href='"+
                      event.venue_url+
                      "'>"+event.venue_name+"</a></span><br><span>"+
-
                      event.start_time+"</span><br>" +
-                     // "<a class='link' href='"+
-                     // event.url+
-                     // "'>Learn more here.</a></r>" 
-
-                     "</div></div></div>";
+                      "</div></div></div>";
             var eventsHolder = $('#eventsDisplay');
             eventsHolder.append(eventDIV);
 
@@ -102,13 +96,3 @@ function getEventsToUI(eventType){
    }
    queryEvents(eventType, address, noOfRecords, dateRange);
 }
-
-// USING GOOGLE API FOR PLACE AUTO-COMPLETE
-// function autocomplete(){
-//    var autocomplete = new google.maps.places.Autocomplete((document.getElementById('txtInputAddress')),
-//                      {types:['geocode']});
-// }
-
-// function initMap(){
-
-// }
