@@ -264,13 +264,43 @@ li{
 	display: inline-block;
 }
 
+@media only screen and (max-width: 1680px) {
+
+	#mapDisplay{
+		height: 400px;
+		max-width: 400px;
+		margin: 10%;
+		margin-top: 15px;
+		position: fixed !important;
+		bottom: -35px !important;
+		right: -50px !important;
+	}
+}
+
+@media only screen and (max-width: 1280) {
+
+	#mapDisplay{
+		height: 400px;
+		max-width: 400px;
+		margin: 10%;
+		margin-top: 15px;
+		position: fixed !important;
+		bottom: 200px !important;
+		right: 40px !important;
+	}
+}
+
 @media only screen and (max-width: 980px) {
 
 	#mapDisplay{
 		height: 300px;
-		width: 80%;
+		max-width: 200%;
 		margin: 10%;
 		margin-top: 15px;
+		position: fixed !important;
+		bottom: 100px !important;
+		right: -30px !important;
+
 	}
 	h4{
 		font-size: 12px;
@@ -287,6 +317,9 @@ li{
 		width: 80%;
 		margin: 10%;
 		margin-top: 15px;
+		position: relative !important;
+		bottom: 0px !important;
+		left: 0px !important;
 	}
 	h2{
 		font-size: 12px;

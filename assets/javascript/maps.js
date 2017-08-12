@@ -49,6 +49,7 @@ function initMap() {
 
 //CALLBACK FUNCTION FOR THE GOOGLE MAPS API. THIS WILL ASK IF MAPS CAN ACCESS CURRENT LOCATION AND DISPLAY ON MAP
 function initMap1() {
+	$("#mapDisplay").css("display", "block");
 	var pos;
 	if(navigator.geolocation){
 		navigator.geolocation.getCurrentPosition(function(position){
@@ -73,7 +74,8 @@ function initMap1() {
 				'atm':'ATM',
 				'hospital':'Hospitals',
 				'pharmacy': 'Pharmacy',
-				'gas-station':'Gas Stations'};
+				'gas-station':'Gas Stations',
+				'parking': 'Parking'};
 			var searchNearBy = document.createElement("SELECT");
 			searchNearBy.id = "searchNearBy";
 			searchNearBy.onchange = function(){
@@ -81,12 +83,14 @@ function initMap1() {
 				fnSearchNearBy(this.value, pos);
 			};
 			var keys = Object.keys(options);
+
 			for (var i=0; i<keys.length; i++){
 				var option = document.createElement("OPTION");
 				var key = keys[i];
+
 				option.value = key;
 				option.innerHTML = options[key];
-				searchNearBy.appendChild(option)
+				searchNearBy.appendChild(option);
 			}
 
 			map.controls[google.maps.ControlPosition.TOP_RIGHT].push(searchNearBy);
@@ -121,15 +125,17 @@ function createMarker(place, searchType){
 	var location = place.geometry.location;
 	var icon;
 	if(searchType === 'restaurant'){
-		icon = 'https://maps.google.com/mapfiles/kml/pal2/icon55.png';
+		icon = 'http://maps.google.com/mapfiles/kml/pal2/icon55.png';
 	} else if(searchType === 'atm'){
-		icon = 'https://maps.google.com/mapfiles/kml/pal2/icon50.png';
+		icon = 'http://maps.google.com/mapfiles/kml/pal2/icon50.png';
 	} else if(searchType === 'hospital'){
-		icon = 'https://maps.google.com/mapfiles/kml/pal3/icon38.png';
+		icon = 'http://maps.google.com/mapfiles/kml/pal3/icon38.png';
 	} else if(searchType === 'pharmacy'){
-		icon = 'https://maps.google.com/mapfiles/kml/pal2/icon1.png';
+		icon = 'http://maps.google.com/mapfiles/kml/pal2/icon1.png';
 	} else if(searchType === 'gas-station'){
-		icon = 'https://maps.google.com/mapfiles/kml/pal2/icon29.png';
+		icon = 'http://maps.google.com/mapfiles/kml/pal2/icon29.png';
+	} else if(searchType === 'parking'){
+		icon = 'http://maps.google.com/mapfiles/kml/pal4/icon15.png';
 	}
 	var serviceMarker = new google.maps.Marker({
 		map:map,
