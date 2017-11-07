@@ -1,0 +1,347 @@
+*{
+	box-sizing: border-box;
+}
+
+html {
+	height: 100%;
+}
+
+body{
+	background-image: url("../images/sunrise.jpg");
+	background-size:cover;
+	/*height:100%;*/
+	min-height: 400px;
+	padding: 80px 0px;
+}
+
+input{
+	text-decoration: none;
+	font-family: 'lato', sans-serif;
+	line-height: 1.2em;
+	letter-spacing: .0166em;
+	font-size: 15px;
+	color: #fff;
+	background-color: #128AAE;
+	border: none;
+}
+
+#search-result {
+	width: 90%;
+	display: block;
+	margin: auto;
+	margin-top: 10px;
+}
+
+#eventImage{
+	float:left;
+	padding: 5px;
+	margin-right: 20px;
+}
+
+.eventList {
+	color:white;
+	display: block;
+	margin: auto;
+	line-height: 1.4em;
+	border: 2px solid white;
+	border-radius: 10px;
+  background-color:  #006AAB;
+  margin-top: 15px;
+  width: 85%;
+}
+
+#eventsDisplay{
+	font-family: 'lato', sans-serif;
+	margin-top: 15px;
+}
+
+.link{
+	color:yellow;
+	text-decoration: underline;
+	font-style: italic;
+}
+
+#mapDisplay{
+	height: 400px;
+	width: 40%;
+	display: none;
+	margin-top: 30px;
+}
+
+/* Style the tab */
+div.tab {
+    overflow: hidden;
+    border: 1px solid #ccc;
+    background-color:  #006AAB ;
+}
+
+/* Style the buttons inside the tab */
+div.tab button {
+    background-color: inherit;
+    float: left;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    padding: 14px 16px;
+    transition: 0.3s;
+}
+
+/* Change background color of buttons on hover */
+div.tab button:hover {
+    background-color: #128AAE ;
+}
+
+/* Create an active/current tablink class */
+div.tab button.active {
+    background-color:  #128AAE;
+}
+
+.tablinks, #displayInfo{
+	color:#fff;
+	font-family: 'lato', sans-serif;
+	line-height: 2em;
+	letter-spacing: .0166em;
+	font-size: 15px;
+}
+
+/* Style the tab content */
+.tabcontent {
+    display: none;
+    padding: 6px 12px;
+    font-family: 'lato', sans-serif;
+}
+
+/*div box styling which contains local weather , Travel sites, and events*/
+#stackContainer {
+	width: 310px;
+	display: block;
+	margin: auto;
+	margin-top: 35px;
+}
+
+#stack{
+	perspective: 1800px;
+	perspective-origin: 50% 50%;
+	font-size: 1.2em;
+	text-align: center;
+	display: block;
+	margin: auto;
+	font-family: Montserrat, Tahoma, Arial, sans-serif;
+	overflow-x:hidden;
+	overflow-x: visible;
+}
+
+p{
+	text-align: center;
+	font-size: 10px;
+	margin-top: 10px;
+}
+
+h2{
+	margin-top: 0;
+}
+
+#stack figure{
+	margin:0 1em;
+	height: 5ch;
+	width:16em;
+	line-height: 5ch;
+	transform-style: preserve-3d;
+	transition: transform .5s ease;
+	cursor:pointer;
+	transform-origin: center center -8em;
+}
+
+figure {
+    -webkit-margin-before: 1em;
+    -webkit-margin-after: 1em;
+    -webkit-margin-start: 40px;
+    -webkit-margin-end: 40px;
+}
+
+#stack figure:hover{
+	transform: rotateY(-90deg);
+}
+
+#stack figure > *{
+	position: absolute;
+	width:inherit;
+	height: inherit;
+	overflow:hidden;
+	font-size: 11.60px !important;
+	color: #fff;
+	font-weight: 500;
+	border-top: .0625rem solid rgba(255, 255, 255 ,.1);
+	backface-visibility: hidden;
+}
+
+#stack figure div{
+	transform-origin: top center;
+	background: #006AAB;
+}
+
+#stack figure ul{
+	transform:rotateY(90deg) translateX(100%);
+	transform-origin: top right;
+	margin:0;
+	padding:0;
+	list-style:none;
+	width:100%;
+	background: #128AAE;
+}
+
+#stack ul li{
+	display: inline-block;
+	border-right:.0625rem solid rgba(255, 255, 255, .1);
+	padding-top: 4px;
+}
+
+p,li,a, #wea-de{
+	font-family: 'lato', sans-serif;
+	line-height: 1.2em;
+	letter-spacing: .0166em;
+	font-size: 15px;
+	color: #fff;
+}
+
+a:hover{
+	color:#009eff;
+
+}
+#stack ul li:last-child{
+	border-right:none;
+	padding: 1px;
+}
+#stack ul.full li{
+	width:100%;
+}
+#stack ul.half li{
+	width:35%;
+}
+#stack ul.two li{
+	width:31.5%;
+}
+
+#search-bar{
+	width:150px;
+	position: absolute;
+	top:5px;
+	left:50px;
+}
+
+.btn{
+	position: absolute;
+	top:5px;
+	left:205px;
+    color: #3596e0;
+}
+
+/*Heading and Footer*/
+.navbar{
+	background-color: #0B071A;
+	color: white;
+}
+
+nav {
+	font-family: 'lato', sans-serif;
+	line-height: 1.2em;
+	padding:8px 8px 8px 8px;
+	text-align: center;
+}
+
+.social-icon{
+	display: inline-block;
+	margin:0px 5px;
+}
+
+#socialiconImg{
+	width:30px;
+	height:30px;
+	background: none;
+}
+
+li{
+	display: inline-block;
+}
+
+@media only screen and (max-width: 1680px) {
+
+	#mapDisplay{
+		height: 400px;
+		max-width: 400px;
+		margin: 10%;
+		margin-top: 15px;
+		position: fixed !important;
+		bottom: -35px !important;
+		right: -50px !important;
+	}
+}
+
+@media only screen and (max-width: 1280) {
+
+	#mapDisplay{
+		height: 400px;
+		max-width: 400px;
+		margin: 10%;
+		margin-top: 15px;
+		position: fixed !important;
+		bottom: 100px !important;
+		right: 40px !important;
+	}
+}
+
+@media only screen and (max-width: 980px) {
+
+	#mapDisplay{
+		height: 300px;
+		max-width: 200%;
+		margin: 10%;
+		margin-top: 15px;
+		position: fixed !important;
+		bottom: 100px !important;
+		right: -30px !important;
+
+	}
+	h4{
+		font-size: 12px;
+		margin-bottom: 0px;
+	}
+	#clock {
+		font-size: 12px;
+	}
+}
+
+@media only screen and (max-width: 768px) {
+	#mapDisplay{
+		height: 300px;
+		width: 80%;
+		margin: 10%;
+		margin-top: 15px;
+		position: relative !important;
+		bottom: 0px !important;
+		left: 0px !important;
+	}
+	h2{
+		font-size: 12px;
+	}
+
+	h4{
+		font-size: 8px;
+	}
+
+	nav{
+		font-size: 8px;
+	}
+
+  #eventImage{
+	width: 40%;
+	float: right;
+	border-width: 0.5px;
+	margin-right: 0px;
+	}
+
+	#eventsDisplay{
+    width: 100%;
+		margin: 0px;
+    }
+}

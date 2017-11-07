@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Project#1</title>
+	<meta name="viewport" content="width=device-width, maximum-scale = 1.0, minimum-scale = 1.0, initial-scale=1.0" />
+	<!-- bootstrap link  -Latest compiled and minified CSS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+	<!-- stylesheet -->
+	<link rel="stylesheet" type="text/css" href="assets/css/style.css">
+	<!-- Moment.js -->
+	<script src="https://cdn.jsdelivr.net/momentjs/2.12.0/moment.min.js"></script>
+</head>
+
+<body onload="autocomplete()">
+
+	<nav class="navbar navbar-default navbar-fixed-top">
+		<div class="container container-fluid">
+			<div class="row">
+				<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+			<!-- <div class="navbar-heading text-left"> -->
+				<h2>Event Hub</h2>
+				<span id="clock"></span>
+				</div>
+				<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+				<h4 style="font-style: italic;">Discover events that match your interests!</h4>
+			<!-- </div> -->
+				</div>
+			</div>
+		</div>
+	</nav>
+
+<!-- 	<article> -->
+	<div class="container container-fluid">
+		<div class="row" id="stackContainer">
+				<div id="stack">
+					<figure>
+						<div>
+							<form>
+								<span class="city" id="wea-de">Search City</span>
+								<span class="country" id="wea-de"></span>
+						</div>
+							<ul class="two">
+								<li><input type="text" name="location" class="form-control" placeholder="City" id="search-bar" />
+								<li><button class="btn btn-default" type="submit" id="submit-id"><i class="glyphicon glyphicon-search"></i></button></li>
+								</li>
+							</ul>
+							</form>
+					</figure>
+
+					<figure>
+						<div>
+							<span id="wea-de" class="localTime"></span><span class="temp" id="wea-de"><p>Local Weather</p></span>
+				        	<!-- <span class="temp" id="wea-de"></span> -->
+						</div>
+						<ul class="two">
+							<li class="sunrise"></li>
+							<li class="humidity"></li>
+							<li class="sunset"></li>
+						</ul>
+					</figure>
+
+					<figure>
+						<div class="event-type"><p>Choose Event Type</p></div>
+					<ul class="two">
+						<li><input type="button"  id="btnGetMusicEvents" onclick="getEventsToUI('music')" value="Music" /></li>
+						<li><input type="button" id="btnGetBusinessEvents" onclick="getEventsToUI('business')" value="Business"/></li>
+						<li><input type="button" id="btnGetFamilyEvents" onclick="getEventsToUI('family')" value="Family"/></li>
+					</ul>
+					</figure>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- </article> -->
+ <!-- Display Section of Events -->
+<div class="container container-fluid">
+ <div id="displayRow" class="row">
+	<div id="eventsDisplay" class="col-xs-12 col-sm-7 col-md-7 col-lg-7 col-xl-8"></div>
+	<div id="mapDisplay" class="col-xs-12 col-sm-5 col-md-5 col-lg-5 col-xl-4"></div>
+ </div>
+</div>
+<nav id="footer" class="navbar navbar-default navbar-fixed-bottom">
+	<div style="font-style: italic;">
+	  	This website was developed with <span style="font-size:200%;color:red;">&hearts;</span> by Brian Hart, Prathibha Chunchu, Guiyu Zhao, Michael Osgood, and Michael Lazear.
+  		<ul class="social-icon">
+			<li><a href="https://github.com/bdoggincali/chartreuse_project" target="_blank">
+				<img src="assets/images/github.png" alt="github" id="socialiconImg"></a></li>
+		</ul>
+	</div>
+</nav>
+
+	<!-- <script src="https://www.gstatic.com/firebasejs/live/3.0/firebase.js"></script> -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+	<!-- Latest compiled and minified JavaScript -->
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+	<!-- EVENT API FROM EVENTFUL.COM -->
+	<script type="text/javascript" src="https://api.eventful.com/js/api"></script>
+	<!-- PROJECT SCRIPTS -->
+	<script type="text/javascript" src="assets/javascript/app.js"></script>
+	<script type="text/javascript" src="assets/javascript/maps.js"></script>
+	<script type="text/javascript" src="assets/javascript/events.js"></script>
+
+	<!-- GOOGLE MAPS API -->
+	<script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAs77kqZl9zUhj7WR0rZfQuEZysFqO1Gy4&callback=initMap&libraries=places">
+    </script>
+</body>
+</html>
