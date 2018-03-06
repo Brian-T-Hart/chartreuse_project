@@ -1,8 +1,35 @@
 
 var eventType = "music";
 var address;
-var dateRange = "2017080100-2017103000";
+var dateRange;
 var noOfRecords = 10;
+
+
+// CURRENT DATE
+var today = new Date();
+console.log("today = " + today);
+
+// UPDATE THE FORMAT FOR USING MOMENTJS
+var newToday = moment(today).format("YYYYMMDD"); 
+console.log("newToday= " + newToday);
+
+
+// FUNCTION TO CALCULATE NEXT WEEK'S DATE
+function getNextWeek(){
+    var nextWeek = new Date(today.getFullYear(), today.getMonth(), today.getDate() + 7);
+    return nextWeek ;
+}
+
+var nextWeek = getNextWeek();
+console.log("nextWeek= " + nextWeek);
+
+var newNextWeek = moment(nextWeek).format("YYYYMMDD"); 
+console.log("newNextWeek= " + newNextWeek);
+
+//UPDATE VALUES IN DATERANGE
+var dateRange = newToday + "00" + "-" + newNextWeek + "00";
+console.log("dateRange= " + dateRange);
+
 
 //CREATE AN EVENT OBJECT TO CAPTURE THE  EVENT RELATED INFORMAION
 
