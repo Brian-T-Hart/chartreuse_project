@@ -30,49 +30,52 @@
 		</div>
 	</nav>
 
-<!-- 	<article> -->
+<!-- Tesserect -->
 	<div class="container container-fluid">
 		<div class="row" id="stackContainer">
-				<div id="stack">
-					<figure>
-						<div>
-							<form>
-								<span class="city" id="wea-de">Search City</span>
-								<span class="country" id="wea-de"></span>
-						</div>
-							<ul class="two">
-								<li><input type="text" name="location" class="form-control" placeholder="City" id="search-bar" />
-								<li><button class="btn btn-default" type="submit" id="submit-id"><i class="glyphicon glyphicon-search"></i></button></li>
-								</li>
-							</ul>
-							</form>
-					</figure>
+			<div id="stack">
 
-					<figure>
-						<div>
-							<span id="wea-de" class="localTime"></span><span class="temp" id="wea-de"><p>Local Weather</p></span>
-				        	<!-- <span class="temp" id="wea-de"></span> -->
-						</div>
-						<ul class="two">
-							<li class="sunrise"></li>
-							<li class="humidity"></li>
-							<li class="sunset"></li>
-						</ul>
-					</figure>
+				<!-- Top Row -->
+				<figure>
+					<div>
+						<form>
+							<span class="city" id="wea-de">Search City</span>
+							<span class="country" id="wea-de"></span>
+						</form>
+					</div>
+					<ul class="two">
+						<li><input type="text" name="location" class="form-control" placeholder="City" id="search-bar"/></li>
+						<li><button class="btn btn-default" type="submit" id="submit-id"><i class="glyphicon glyphicon-search"></i></button></li>
+					</ul>	
+				</figure>
+	
+				<!-- Middle Row -->
+				<figure>
+					<div>
+						<span id="wea-de" class="localTime"></span>
+						<span class="temp" id="wea-de"><p>Local Weather</p></span>
+					</div>
+					<ul class="two">
+						<li class="sunrise"></li>
+						<li class="humidity"></li>
+						<li class="sunset"></li>
+					</ul>
+				</figure>
 
-					<figure>
-						<div class="event-type"><p>Choose Event Type</p></div>
+				<!-- Bottom Row -->
+				<figure>
+					<div class="event-type">
+						<p>Choose Event Type</p>
+					</div>
 					<ul class="two">
 						<li><input type="button"  id="btnGetMusicEvents" onclick="getEventsToUI('music')" value="Music" /></li>
 						<li><input type="button" id="btnGetBusinessEvents" onclick="getEventsToUI('business')" value="Business"/></li>
 						<li><input type="button" id="btnGetFamilyEvents" onclick="getEventsToUI('family')" value="Family"/></li>
 					</ul>
-					</figure>
-				</div>
+				</figure>
 			</div>
 		</div>
 	</div>
-	<!-- </article> -->
  <!-- Display Section of Events -->
 <div class="container container-fluid">
  <div id="displayRow" class="row">
